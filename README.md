@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/lkey124/vhu">
-    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Flkey124%2Fvhu&count_bg=%231976D2&title_bg=%2324292E&icon=eye.svg&icon_color=%23E7E7E7&title=l%C6%B0%E1%BB%A3t+xem+%F0%9F%91%81%EF%B8%8F&edge_flat=false" alt="Lượt xem" />
+    <img src="https://komarev.com/ghpvc/?username=lkey124-vhu&label=M%E1%BA%AFt+xem+%F0%9F%91%81%EF%B8%8F&color=1976d2&style=flat" alt="Mắt xem" />
   </a>
   <img src="https://img.shields.io/badge/VHU-Portal%20Fix-00c853?style=flat&logo=school" alt="VHU Fix" />
   <img src="https://img.shields.io/badge/Tr%E1%BA%A1ng%20th%C3%A1i-Ho%E1%BA%A1t%20%C4%91%E1%BB%99ng%20100%25-brightgreen" alt="Status" />
@@ -47,13 +47,6 @@ Sao chép toàn bộ nội dung file [`vhu_fix_tool.js`](./vhu_fix_tool.js) ho�
 1. Nhấn **Ctrl + V** để dán đoạn mã vào rồi nhấn **Enter**.
 2. Nhập các thông tin còn thiếu theo từng ô hỏi trên màn hình (Phường xã, SĐT người thân...).
 3. Đợi thông báo **"🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!"** &rarr; Trang web sẽ tự tải lại và đưa bạn vào thẳng trang chủ Portal sinh viên!
-
----
-
-## 📄 Mã nguồn công cụ (vhu_fix_tool.js)
-```javascript
-// Xem chi tiết mã đầy đủ tại file vhu_fix_tool.js trong repository này
-```
 
 ---
 
