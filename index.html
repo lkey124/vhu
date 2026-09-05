@@ -4,90 +4,312 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Công cụ mở khóa Cập nhật thông tin VHU</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
-    .card { background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 550px; width: 100%; padding: 30px; text-align: center; }
-    .badge-top { display: flex; justify-content: center; align-items: center; gap: 8px; margin-bottom: 12px; }
-    .badge { background: #e3f2fd; color: #1976d2; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-block; }
-    .views-badge { display: inline-flex; align-items: center; }
-    h1 { font-size: 22px; color: #1a202c; margin-bottom: 10px; line-height: 1.4; }
-    p.desc { font-size: 14px; color: #718096; margin-bottom: 20px; line-height: 1.5; }
-    .btn-copy { background: linear-gradient(135deg, #1976d2, #0d47a1); color: white; border: none; padding: 16px 28px; font-size: 16px; font-weight: bold; border-radius: 12px; cursor: pointer; width: 100%; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(25, 118, 210, 0.35); display: flex; justify-content: center; align-items: center; gap: 10px; }
-    .btn-copy:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(25, 118, 210, 0.45); }
-    .btn-copy:active { transform: translateY(0); }
-    .copied { background: #2e7d32 !important; box-shadow: 0 4px 15px rgba(46, 125, 50, 0.35) !important; }
-    .guide { text-align: left; margin-top: 25px; background: #f8fafc; border-radius: 12px; padding: 20px; border: 1px solid #e2e8f0; }
-    .guide h3 { font-size: 15px; color: #2d3748; margin-bottom: 12px; }
-    .guide ol { padding-left: 20px; font-size: 14px; color: #4a5568; line-height: 1.8; }
-    .guide ol li strong { color: #1a202c; }
-    .alert-box { margin-top: 15px; padding: 12px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px; font-size: 13px; color: #856404; line-height: 1.5; }
-    .footer-link { margin-top: 20px; font-size: 13px; color: #a0aec0; }
-    .footer-link a { color: #1976d2; text-decoration: none; font-weight: 500; }
-    .vote-card { margin-top: 22px; background: linear-gradient(135deg, #fff5f5, #fef2f2); border: 2px dashed #f87171; border-radius: 14px; padding: 18px; text-align: left; }
-    .vote-tag { background: #ef4444; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
-    .vote-body { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
-    .vote-thumb { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #fecaca; flex-shrink: 0; }
-    .vote-info h4 { font-size: 15px; color: #991b1b; margin-bottom: 4px; }
-    .vote-info p.vote-event { font-size: 12.5px; color: #4b5563; margin-bottom: 4px; }
-    .vote-info p.vote-msg { font-size: 12px; color: #b91c1c; line-height: 1.4; font-weight: 500; }
-    .btn-vote { display: block; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; text-decoration: none; text-align: center; padding: 12px 16px; border-radius: 10px; font-weight: bold; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
-    .btn-vote:hover { background: linear-gradient(135deg, #dc2626, #b91c1c); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4); }
-    .urgent-notice { background: #fffbeb; border: 1.5px solid #f59e0b; color: #92400e; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-align: left; box-shadow: 0 3px 10px rgba(245, 158, 11, 0.15); }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body {
+      background: radial-gradient(100% 100% at 50% 0%, #f8fafc 0%, #e2e8f0 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 32px 16px;
+      color: #0f172a;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Double-Bezel Architecture */
+    .shell {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 8px;
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      backdrop-filter: blur(16px);
+      max-width: 530px;
+      width: 100%;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 36px 28px 28px;
+      border: 1px solid rgba(241, 245, 249, 0.9);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 1);
+      text-align: center;
+    }
+
+    .badge-top { display: flex; justify-content: center; margin-bottom: 16px; }
+    .badge {
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    h1 {
+      font-size: 23px;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+    p.desc {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* Urgent Notice */
+    .urgent-notice {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
+    }
+    .notice-icon-wrapper {
+      width: 32px;
+      height: 32px;
+      background: #fef3c7;
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
     .urgent-notice strong { color: #b45309; font-weight: 700; }
-    .notice-icon { font-size: 22px; flex-shrink: 0; }
-    .footer-author { margin-top: 22px; font-size: 13px; color: #94a3b8; font-weight: 500; letter-spacing: 0.3px; }
+
+    /* Button-in-Button Primary Copy Button */
+    .btn-copy {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      padding: 8px 10px 8px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      letter-spacing: 0.01em;
+    }
+    .btn-copy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    }
+    .btn-copy:active {
+      transform: scale(0.98);
+    }
+    .btn-icon-wrapper {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .btn-copy:hover .btn-icon-wrapper {
+      transform: scale(1.06);
+      background: rgba(255, 255, 255, 0.28);
+    }
+    .copied {
+      background: linear-gradient(135deg, #059669, #047857) !important;
+      box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4) !important;
+    }
+
+    /* Vote Card (Nhóm UTG) */
+    .vote-card {
+      margin-top: 24px;
+      background: linear-gradient(135deg, #fff1f2, #ffe4e6);
+      border: 1.5px solid #fecdd3;
+      border-radius: 20px;
+      padding: 18px;
+      text-align: left;
+      box-shadow: 0 10px 25px -8px rgba(225, 29, 72, 0.08);
+    }
+    .vote-tag {
+      background: #e11d48;
+      color: white;
+      font-size: 10.5px;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      display: inline-block;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .vote-body { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+    .vote-thumb {
+      width: 66px;
+      height: 66px;
+      border-radius: 14px;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 2px solid #ffffff;
+      flex-shrink: 0;
+    }
+    .vote-info h4 { font-size: 15px; font-weight: 700; color: #9f1239; margin-bottom: 3px; }
+    .vote-info p.vote-event { font-size: 12px; color: #475569; margin-bottom: 4px; font-weight: 500; }
+    .vote-info p.vote-msg { font-size: 12.5px; color: #be123c; line-height: 1.45; font-weight: 600; }
+    .btn-vote {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #e11d48, #be123c);
+      color: white;
+      text-decoration: none;
+      padding: 8px 10px 8px 20px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 13.5px;
+      box-shadow: 0 8px 20px -4px rgba(225, 29, 72, 0.35);
+      transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+    .btn-vote:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 25px -4px rgba(225, 29, 72, 0.45);
+    }
+    .btn-vote:active {
+      transform: scale(0.98);
+    }
+    .btn-vote-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Guide */
+    .guide {
+      text-align: left;
+      margin-top: 24px;
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+    }
+    .guide h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+    .guide ol { padding-left: 20px; font-size: 13.5px; color: #475569; line-height: 1.75; font-weight: 500; }
+    .guide ol li strong { color: #0f172a; font-weight: 700; }
+    .alert-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-radius: 12px;
+      font-size: 12.5px;
+      color: #854d0e;
+      line-height: 1.5;
+    }
+
+    /* Footer Author */
+    .footer-author {
+      margin-top: 22px;
+      font-size: 13px;
+      color: #94a3b8;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <div class="badge-top">
-      <div class="badge">VHU Portal Fix Tool</div>
-    </div>
-    <h1>Mở Khóa Cập Nhật Thông Tin VHU</h1>
-    <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options).</p>
-
-    <div class="urgent-notice">
-      <span class="notice-icon">📢</span>
-      <div>
-        <strong>LƯU Ý:</strong> Cách này chỉ dùng tạm thời chờ thông báo nếu mn cần vào portal gấp thôi nha!
+  <div class="shell">
+    <div class="card">
+      <div class="badge-top">
+        <div class="badge">VHU Portal Fix Tool</div>
       </div>
-    </div>
+      <h1>Mở Khóa Cập Nhật Thông Tin VHU</h1>
+      <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options).</p>
 
-    <button id="copyBtn" class="btn-copy" onclick="copyCode()">
-      <span id="btnIcon">📋</span>
-      <span id="btnText">BẤM ĐỂ SAO CHÉP MÃ FIX</span>
-    </button>
-
-    <!-- BANNER VOTE ỦNG HỘ NHÓM UTG -->
-    <div class="vote-card">
-      <div class="vote-tag">💖 GÓC NHỜ VẢ - BÌNH CHỌN CHO MÌNH NHÉ!</div>
-      <div class="vote-body">
-        <img class="vote-thumb" src="https://s3.hcm-1.cloud.cmctelecom.vn/vhu/minigame/Nhm-UTG-1787631534481.webp" alt="82. Nhóm UTG" />
-        <div class="vote-info">
-          <h4>Bình chọn: 82. Nhóm UTG</h4>
-          <p class="vote-event">Cuộc thi: <strong>Thiết kế Logo Kỷ niệm VHU 30 năm</strong></p>
-          <p class="vote-msg">Thấy hay hãy giúp mình 1 bình chọn nha, để mình lên tiếp code đổi avatar lại cho các bạn lầm lỡ :)))) 🙏✨</p>
+      <div class="urgent-notice">
+        <div class="notice-icon-wrapper">📢</div>
+        <div>
+          <strong>LƯU Ý:</strong> Cách này chỉ dùng tạm thời chờ thông báo nếu mn cần vào portal gấp thôi nha!
         </div>
       </div>
-      <a href="https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84" target="_blank" class="btn-vote">
-        🥰 VOTE LIỀN CHO MÌNH NÈ &rarr;
-      </a>
-    </div>
 
-    <div class="guide">
-      <h3>📖 Hướng dẫn 3 bước cực dễ:</h3>
-      <ol>
-        <li>Bấm nút xanh ở trên để <strong>sao chép mã</strong>.</li>
-        <li>Mở trang portal VHU bị kẹt, nhấn phím <strong>F12</strong> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) &rarr; chọn tab <strong>Console</strong>.</li>
-        <li><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Mục nào thiếu nó sẽ tự hỏi bạn nhập, mục nào bạn đã điền nó tự giữ nguyên!</li>
-      </ol>
-      <div class="alert-box">
-        <strong>⚠️ Lưu ý nếu Chrome/Edge chặn không cho dán:</strong><br>
-        Nếu thấy Chrome hiện dòng chữ đỏ cảnh báo <em>"Warning: Don't paste code..."</em> và không cho bấm Ctrl+V, bạn chỉ cần <strong>gõ chữ <code>allow pasting</code> vào Console rồi bấm Enter</strong>. Sau đó bấm Ctrl+V lại là được nhé!
+      <button id="copyBtn" class="btn-copy" onclick="copyCode()">
+        <span id="btnText">BẤM ĐỂ SAO CHÉP MÃ FIX</span>
+        <span id="btnIcon" class="btn-icon-wrapper">📋</span>
+      </button>
+
+      <!-- BANNER VOTE ỦNG HỘ NHÓM UTG -->
+      <div class="vote-card">
+        <div class="vote-tag">💖 GÓC NHỜ VẢ - BÌNH CHỌN CHO MÌNH NHÉ!</div>
+        <div class="vote-body">
+          <img class="vote-thumb" src="https://s3.hcm-1.cloud.cmctelecom.vn/vhu/minigame/Nhm-UTG-1787631534481.webp" alt="82. Nhóm UTG" />
+          <div class="vote-info">
+            <h4>Bình chọn: 82. Nhóm UTG</h4>
+            <p class="vote-event">Cuộc thi: <strong>Thiết kế Logo Kỷ niệm VHU 30 năm</strong></p>
+            <p class="vote-msg">Thấy hay hãy giúp mình 1 bình chọn nha, để mình lên tiếp code đổi avatar lại cho các bạn lầm lỡ :)))) 🙏✨</p>
+          </div>
+        </div>
+        <a href="https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84" target="_blank" class="btn-vote">
+          <span>🥰 VOTE LIỀN CHO MÌNH NÈ</span>
+          <span class="btn-vote-icon">&rarr;</span>
+        </a>
       </div>
+
+      <div class="guide">
+        <h3>📖 Hướng dẫn 3 bước cực dễ:</h3>
+        <ol>
+          <li>Bấm nút xanh ở trên để <strong>sao chép mã</strong>.</li>
+          <li>Mở trang portal VHU bị kẹt, nhấn phím <strong>F12</strong> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) &rarr; chọn tab <strong>Console</strong>.</li>
+          <li><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Mục nào thiếu nó sẽ tự hỏi bạn nhập, mục nào bạn đã điền nó tự giữ nguyên!</li>
+        </ol>
+        <div class="alert-box">
+          <strong>⚠️ Lưu ý nếu Chrome/Edge chặn không cho dán:</strong><br>
+          Nếu thấy Chrome hiện dòng chữ đỏ cảnh báo <em>"Warning: Don't paste code..."</em> và không cho bấm Ctrl+V, bạn chỉ cần <strong>gõ chữ <code>allow pasting</code> vào Console rồi bấm Enter</strong>. Sau đó bấm Ctrl+V lại là được nhé!
+        </div>
+      </div>
+      <div class="footer-author">@binhluu</div>
     </div>
-    <div class="footer-author">by binhluu</div>
   </div>
 
   <script>
