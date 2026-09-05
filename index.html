@@ -33,6 +33,9 @@
     .vote-info p.vote-msg { font-size: 12px; color: #b91c1c; line-height: 1.4; font-weight: 500; }
     .btn-vote { display: block; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; text-decoration: none; text-align: center; padding: 12px 16px; border-radius: 10px; font-weight: bold; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
     .btn-vote:hover { background: linear-gradient(135deg, #dc2626, #b91c1c); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4); }
+    .urgent-notice { background: #fffbeb; border: 1.5px solid #f59e0b; color: #92400e; padding: 12px 16px; border-radius: 12px; font-size: 13.5px; line-height: 1.5; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-align: left; box-shadow: 0 3px 10px rgba(245, 158, 11, 0.15); }
+    .urgent-notice strong { color: #b45309; font-weight: 700; }
+    .notice-icon { font-size: 22px; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -41,7 +44,14 @@
       <div class="badge">VHU Portal Fix Tool</div>
     </div>
     <h1>Mở Khóa Cập Nhật Thông Tin VHU</h1>
-    <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options). Tuyệt đối không tự sinh dữ liệu bừa bãi, giữ nguyên thông tin bạn đã điền và lưu vĩnh viễn không bị lại khi F5.</p>
+    <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options).</p>
+
+    <div class="urgent-notice">
+      <span class="notice-icon">📢</span>
+      <div>
+        <strong>LƯU Ý:</strong> Cách này chỉ dùng tạm thời chờ thông báo nếu mn cần vào portal gấp thôi nha!
+      </div>
+    </div>
 
     <button id="copyBtn" class="btn-copy" onclick="copyCode()">
       <span id="btnIcon">📋</span>

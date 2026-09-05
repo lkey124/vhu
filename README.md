@@ -12,6 +12,8 @@
   </a>
 </p>
 
+> 📢 **LƯU Ý:** Cách này chỉ dùng tạm thời chờ thông báo nếu mn cần vào portal gấp thôi nha!
+
 ---
 
 ## 📌 Vấn đề thường gặp tại Portal VHU
