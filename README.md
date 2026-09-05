@@ -9,6 +9,12 @@
   <img src="https://img.shields.io/badge/Gi%E1%BA%A3i%20ph%C3%A1p-L%C6%B0u%20v%C4%A9nh%20vi%E1%BB%85n-blue" alt="Permanent Save" />
 </p>
 
+<p align="center">
+  <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flkey124%2Fvhu">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
+</p>
+
 ---
 
 ## 📌 Vấn đề thường gặp tại Portal VHU
