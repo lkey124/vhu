@@ -1,9 +1,6 @@
 # 🎓 Công Cụ Mở Khóa & Cập Nhật Thông Tin VHU Portal
 
 <p align="center">
-  <a href="https://github.com/lkey124/vhu">
-    <img src="https://komarev.com/ghpvc/?username=lkey124-vhu&label=M%E1%BA%AFt+xem+%F0%9F%91%81%EF%B8%8F&color=1976d2&style=flat" alt="Mắt xem" />
-  </a>
   <img src="https://img.shields.io/badge/VHU-Portal%20Fix-00c853?style=flat&logo=school" alt="VHU Fix" />
   <img src="https://img.shields.io/badge/Tr%E1%BA%A1ng%20th%C3%A1i-Ho%E1%BA%A1t%20%C4%91%E1%BB%99ng%20100%25-brightgreen" alt="Status" />
   <img src="https://img.shields.io/badge/Gi%E1%BA%A3i%20ph%C3%A1p-L%C6%B0u%20v%C4%A9nh%20vi%E1%BB%85n-blue" alt="Permanent Save" />
