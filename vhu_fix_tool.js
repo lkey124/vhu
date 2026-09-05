@@ -190,6 +190,58 @@
   if (setStudent) setStudent(s);
   if (setErrors) setErrors({});
 
+  function showVoteModal() {
+    if (document.getElementById('vhu-vote-modal')) return;
+
+    const modalOverlay = document.createElement('div');
+    modalOverlay.id = 'vhu-vote-modal';
+    modalOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); z-index: 99999999; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
+
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = 'background: #ffffff; max-width: 440px; width: 100%; border-radius: 24px; padding: 30px 24px 24px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35); position: relative; border: 3px solid #ffccd5; box-sizing: border-box; animation: vhuFadeIn 0.3s ease-out;';
+
+    modalContent.innerHTML = `
+      <style>
+        @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.92) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        @keyframes vhuHeartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .vhu-heart { display: inline-block; animation: vhuHeartBeat 1.2s infinite; font-size: 42px; line-height: 1; margin-bottom: 10px; }
+        .vhu-title { font-size: 19px; font-weight: 800; color: #1e293b; margin-bottom: 8px; }
+        .vhu-badge { display: inline-block; background: #ffe4e6; color: #e11d48; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+        .vhu-box-msg { font-size: 14.5px; color: #334155; line-height: 1.55; margin-bottom: 20px; padding: 14px; background: #fff1f2; border-radius: 16px; border: 1.5px dashed #fda4af; text-align: center; }
+        .vhu-box-msg strong { color: #e11d48; }
+        .vhu-btn-vote { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 20px; background: linear-gradient(135deg, #ff4b72, #e11d48); color: white !important; border: none; border-radius: 16px; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; box-shadow: 0 6px 20px rgba(225, 29, 72, 0.35); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-vote:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(225, 29, 72, 0.45); }
+        .vhu-btn-skip { display: block; width: 100%; padding: 11px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
+        .vhu-btn-skip:hover { background: #fee2e2; color: #b91c1c; border-color: #fca5a5; transform: translateY(-1px); }
+      </style>
+      <div class="vhu-heart">💖</div>
+      <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
+      <div class="vhu-badge">Cuộc thi Thiết kế Logo VHU 30 năm</div>
+      <div class="vhu-box-msg">
+        Thấy hay hãy giúp mình 1 bình chọn nha, để mình lên tiếp <strong>code đổi avatar</strong> lại cho các bạn lầm lỡ :))))<br>
+        <span style="font-size: 12.5px; color: #be123c; margin-top: 5px; display: inline-block;">(Tác phẩm: <strong>82. Nhóm UTG</strong>)</span>
+      </div>
+      <a href="https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84" target="_blank" id="vhuVoteLink" class="vhu-btn-vote">
+        🥰 Vote liền cho mình nè (Bài 82) 🚀
+      </a>
+      <button id="vhuSkipButton" class="vhu-btn-skip">
+        🥺 Vote đi mà :)))) (Vào Portal)
+      </button>
+    `;
+
+    document.body.appendChild(modalOverlay);
+    modalOverlay.appendChild(modalContent);
+
+    document.getElementById('vhuVoteLink').onclick = function() {
+      setTimeout(() => { location.reload(); }, 1500);
+    };
+
+    document.getElementById('vhuSkipButton').onclick = function() {
+      modalOverlay.remove();
+      location.reload();
+    };
+  }
+
   // 18. LƯU VĨNH VIỄN LÊN MÁY CHỦ
   try {
     const auth = JSON.parse(localStorage.getItem("authorizationData") || "{}");
@@ -207,9 +259,7 @@
       });
       const result = await postRes.json();
       if (postRes.ok) {
-        alert("🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN LÊN MÁY CHỦ!\n\nTừ nay bạn F5 thoải mái sẽ KHÔNG BAO GIỜ bị hiện lại bảng này nữa.\n\n💖 Nếu thấy hay hãy cho Hai 1 bình chọn nha, để Hai lên code đổi avatar cho các bạn lầm lỡ :)))) (Bài 82 - Nhóm UTG). Cảm ơn bạn rất nhiều! 🙏✨");
-        try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
-        location.reload();
+        showVoteModal();
         return;
       }
     }
@@ -217,6 +267,5 @@
     console.warn("Lỗi lưu trực tiếp:", e);
   }
 
-  alert("✅ Đã hoàn tất và xóa sạch lỗi đỏ! Hãy bấm nút LƯU VÀ TIẾP TỤC ở cuối trang nhé!\n\n💖 Nếu thấy hay hãy cho Hai 1 bình chọn nha, để Hai lên code đổi avatar cho các bạn lầm lỡ :)))) (Bài 82 - Nhóm UTG). Cảm ơn bạn rất nhiều! 🙏✨");
-  try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
+  showVoteModal();
 })();
