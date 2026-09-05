@@ -60,7 +60,7 @@ Sao chép toàn bộ nội dung file [`vhu_fix_tool.js`](./vhu_fix_tool.js) ho�
 
 Nhóm chúng mình đang tham gia cuộc thi **Thiết kế Logo Kỷ niệm VHU 30 năm** của trường:
 - **Tác phẩm dự thi**: **82. Nhóm UTG**
-- Nếu công cụ fix portal này giúp ích cho bạn và bạn thấy bài viết hữu ích, hãy dành 5 giây ghé vào thả **1 vote** ủng hộ cho nhóm chúng mình nhé! Cảm ơn mọi người rất nhiều! 🙏✨
+- *Nếu thấy hay hãy cho Hai 1 bình chọn nha, để Hai lên code đổi avatar cho các bạn lầm lỡ :))))* 🙏✨
 
 👉 **[BẤM VÀO ĐÂY ĐỂ BÌNH CHỌN CHO BÀI 82 - NHÓM UTG](https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84)**
 
