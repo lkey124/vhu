@@ -24,6 +24,15 @@
     .alert-box { margin-top: 15px; padding: 12px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 6px; font-size: 13px; color: #856404; line-height: 1.5; }
     .footer-link { margin-top: 20px; font-size: 13px; color: #a0aec0; }
     .footer-link a { color: #1976d2; text-decoration: none; font-weight: 500; }
+    .vote-card { margin-top: 22px; background: linear-gradient(135deg, #fff5f5, #fef2f2); border: 2px dashed #f87171; border-radius: 14px; padding: 18px; text-align: left; }
+    .vote-tag { background: #ef4444; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; }
+    .vote-body { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+    .vote-thumb { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #fecaca; flex-shrink: 0; }
+    .vote-info h4 { font-size: 15px; color: #991b1b; margin-bottom: 4px; }
+    .vote-info p.vote-event { font-size: 12.5px; color: #4b5563; margin-bottom: 4px; }
+    .vote-info p.vote-msg { font-size: 12px; color: #b91c1c; line-height: 1.4; font-weight: 500; }
+    .btn-vote { display: block; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; text-decoration: none; text-align: center; padding: 12px 16px; border-radius: 10px; font-weight: bold; font-size: 14px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); }
+    .btn-vote:hover { background: linear-gradient(135deg, #dc2626, #b91c1c); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4); }
   </style>
 </head>
 <body>
@@ -41,6 +50,22 @@
       <span id="btnIcon">📋</span>
       <span id="btnText">BẤM ĐỂ SAO CHÉP MÃ FIX</span>
     </button>
+
+    <!-- BANNER VOTE ỦNG HỘ NHÓM UTG -->
+    <div class="vote-card">
+      <div class="vote-tag">💖 GÓC NHỜ VẢ - ỦNG HỘ NHÓM MÌNH NHÉ!</div>
+      <div class="vote-body">
+        <img class="vote-thumb" src="https://s3.hcm-1.cloud.cmctelecom.vn/vhu/minigame/Nhm-UTG-1787631534481.webp" alt="82. Nhóm UTG" />
+        <div class="vote-info">
+          <h4>Bình chọn: 82. Nhóm UTG</h4>
+          <p class="vote-event">Cuộc thi: <strong>Thiết kế Logo Kỷ niệm VHU 30 năm</strong></p>
+          <p class="vote-msg">Nếu thấy công cụ fix này hữu ích, bạn dành 5 giây ghé vào thả 1 vote ủng hộ tụi mình nhé! Cảm ơn bạn rất nhiều! 🙏✨</p>
+        </div>
+      </div>
+      <a href="https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84" target="_blank" class="btn-vote">
+        🗳️ BẤM VÀO ĐÂY ĐỂ VOTE CHO NHÓM UTG (BÀI 82) &rarr;
+      </a>
+    </div>
 
     <div class="guide">
       <h3>📖 Hướng dẫn 3 bước cực dễ:</h3>
@@ -275,7 +300,8 @@
       });
       const result = await postRes.json();
       if (postRes.ok) {
-        alert("🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN LÊN MÁY CHỦ!\\n\\nTừ nay bạn F5 thoải mái sẽ KHÔNG BAO GIỜ bị hiện lại bảng này nữa.");
+        alert("🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN LÊN MÁY CHỦ!\\n\\nTừ nay bạn F5 thoải mái sẽ KHÔNG BAO GIỜ bị hiện lại bảng này nữa.\\n\\n💖 Bạn ơi, nhóm mình đang tham gia cuộc thi 'Thiết kế logo kỷ niệm VHU30' (Bài 82 - Nhóm UTG). Nếu thấy công cụ hữu ích, bạn ghé qua thả 1 vote ủng hộ tụi mình nhé! Cảm ơn bạn rất nhiều! 🙏✨");
+        try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
         location.reload();
         return;
       }
@@ -284,7 +310,8 @@
     console.warn("Lỗi lưu trực tiếp:", e);
   }
 
-  alert("✅ Đã hoàn tất và xóa sạch lỗi đỏ! Hãy bấm nút LƯU VÀ TIẾP TỤC ở cuối trang nhé!");
+  alert("✅ Đã hoàn tất và xóa sạch lỗi đỏ! Hãy bấm nút LƯU VÀ TIẾP TỤC ở cuối trang nhé!\\n\\n💖 Bạn ơi, nhóm mình đang tham gia cuộc thi 'Thiết kế logo kỷ niệm VHU30' (Bài 82 - Nhóm UTG). Nếu thấy công cụ hữu ích, bạn ghé qua thả 1 vote ủng hộ tụi mình nhé! Cảm ơn bạn rất nhiều! 🙏✨");
+  try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
 })();`;
 
     function copyCode() {

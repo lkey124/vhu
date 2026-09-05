@@ -207,7 +207,8 @@
       });
       const result = await postRes.json();
       if (postRes.ok) {
-        alert("🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN LÊN MÁY CHỦ!\n\nTừ nay bạn F5 thoải mái sẽ KHÔNG BAO GIỜ bị hiện lại bảng này nữa.");
+        alert("🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN LÊN MÁY CHỦ!\n\nTừ nay bạn F5 thoải mái sẽ KHÔNG BAO GIỜ bị hiện lại bảng này nữa.\n\n💖 Bạn ơi, nhóm mình đang tham gia cuộc thi 'Thiết kế logo kỷ niệm VHU30' (Bài 82 - Nhóm UTG). Nếu thấy công cụ hữu ích, bạn ghé qua thả 1 vote ủng hộ tụi mình nhé! Cảm ơn bạn rất nhiều! 🙏✨");
+        try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
         location.reload();
         return;
       }
@@ -216,5 +217,6 @@
     console.warn("Lỗi lưu trực tiếp:", e);
   }
 
-  alert("✅ Đã hoàn tất và xóa sạch lỗi đỏ! Hãy bấm nút LƯU VÀ TIẾP TỤC ở cuối trang nhé!");
+  alert("✅ Đã hoàn tất và xóa sạch lỗi đỏ! Hãy bấm nút LƯU VÀ TIẾP TỤC ở cuối trang nhé!\n\n💖 Bạn ơi, nhóm mình đang tham gia cuộc thi 'Thiết kế logo kỷ niệm VHU30' (Bài 82 - Nhóm UTG). Nếu thấy công cụ hữu ích, bạn ghé qua thả 1 vote ủng hộ tụi mình nhé! Cảm ơn bạn rất nhiều! 🙏✨");
+  try { window.open("https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84", "_blank"); } catch(e){}
 })();
