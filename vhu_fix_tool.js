@@ -222,10 +222,10 @@
         <span style="font-size: 12.5px; color: #be123c; margin-top: 5px; display: inline-block;">(Tác phẩm: <strong>82. Nhóm UTG</strong>)</span>
       </div>
       <a href="https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84" target="_blank" id="vhuVoteLink" class="vhu-btn-vote">
-        🥰 Vote liền cho mình nè (Bài 82) 🚀
+        🥰 Vote liền cho mình nè
       </a>
       <button id="vhuSkipButton" class="vhu-btn-skip">
-        🥺 Vote đi mà :)))) (Vào Portal)
+        🥺 Vote đi mà (Bỏ qua)
       </button>
     `;
 

@@ -62,7 +62,7 @@ Nhóm chúng mình đang tham gia cuộc thi **Thiết kế Logo Kỷ niệm VHU
 - **Tác phẩm dự thi**: **82. Nhóm UTG**
 - *Thấy hay hãy giúp mình 1 bình chọn nha, để mình lên tiếp code đổi avatar lại cho các bạn lầm lỡ :))))* 🙏✨
 
-👉 **[BẤM VÀO ĐÂY ĐỂ VOTE CHO MÌNH NÈ (BÀI 82 - NHÓM UTG)](https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84)**
+👉 **[🥰 VOTE LIỀN CHO MÌNH NÈ](https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84)**
 
 ---
 
