@@ -9,249 +9,222 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    
     body {
-      background: radial-gradient(100% 100% at 50% 0%, #f8fafc 0%, #e2e8f0 100%);
+      background: radial-gradient(120% 120% at 50% 0%, #f1f5f9 0%, #e2e8f0 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      padding: 32px 16px;
+      padding: 40px 20px;
       color: #0f172a;
       -webkit-font-smoothing: antialiased;
     }
     
-    /* Double-Bezel Architecture */
+    /* Double-Bezel VIP Pro Architecture (Spacious & Clean) */
     .shell {
-      background: rgba(255, 255, 255, 0.7);
-      padding: 8px;
-      border-radius: 32px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.04);
-      backdrop-filter: blur(16px);
-      max-width: 530px;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 10px;
+      border-radius: 36px;
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 30px 60px -12px rgba(15, 23, 42, 0.1), 0 0 0 1px rgba(15, 23, 42, 0.04);
+      backdrop-filter: blur(20px);
+      max-width: 760px;
       width: 100%;
+      transition: all 0.3s ease;
     }
+    
     .card {
       background: #ffffff;
-      border-radius: 24px;
-      padding: 36px 28px 28px;
-      border: 1px solid rgba(241, 245, 249, 0.9);
+      border-radius: 28px;
+      padding: 44px 40px 36px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), inset 0 1px 1px rgba(255, 255, 255, 1);
       text-align: center;
     }
 
-    .badge-top { display: flex; justify-content: center; margin-bottom: 16px; }
+    /* Top Badge */
+    .badge-top { display: flex; justify-content: center; margin-bottom: 18px; }
     .badge {
-      background: #f1f5f9;
+      background: #f8fafc;
       color: #0f172a;
       border: 1px solid #e2e8f0;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: 9999px;
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       display: inline-flex;
       align-items: center;
-      gap: 7px;
+      gap: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
     .badge::before {
       content: "";
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
       background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
+      box-shadow: 0 0 10px #10b981;
     }
 
+    /* Typography */
     h1 {
-      font-size: 23px;
+      font-size: 27px;
       font-weight: 800;
       color: #0f172a;
-      letter-spacing: -0.025em;
-      line-height: 1.35;
-      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 10px;
     }
     p.desc {
-      font-size: 14px;
+      font-size: 15px;
       color: #64748b;
-      margin-bottom: 18px;
-      line-height: 1.5;
+      margin-bottom: 22px;
+      line-height: 1.55;
       font-weight: 500;
     }
 
     /* Urgent Notice */
     .urgent-notice {
-      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      background: #fffbeb;
       border: 1px solid #fde68a;
       color: #92400e;
-      padding: 12px 16px;
-      border-radius: 16px;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 22px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-size: 13.5px;
+      line-height: 1.55;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       text-align: left;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.08);
     }
     .notice-icon-wrapper {
-      width: 32px;
-      height: 32px;
+      width: 36px;
+      height: 36px;
       background: #fef3c7;
       border: 1px solid #fcd34d;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 17px;
       flex-shrink: 0;
     }
     .urgent-notice strong { color: #b45309; font-weight: 700; }
 
-    /* Button-in-Button Primary Copy Button */
+    /* Primary CTA Button (Button-in-Button Architecture) */
     .btn-copy {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
       color: white;
       border: none;
-      padding: 8px 10px 8px 24px;
-      font-size: 15px;
-      font-weight: 700;
+      padding: 10px 12px 10px 28px;
+      font-size: 16px;
+      font-weight: 800;
       border-radius: 9999px;
       cursor: pointer;
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-      transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-      letter-spacing: 0.01em;
+      box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+      transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      letter-spacing: 0.02em;
     }
     .btn-copy:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px -5px rgba(37, 99, 235, 0.48), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+      box-shadow: 0 16px 32px -6px rgba(37, 99, 235, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
     }
     .btn-copy:active {
-      transform: scale(0.98);
+      transform: scale(0.985);
     }
     .btn-icon-wrapper {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       background: rgba(255, 255, 255, 0.2);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 17px;
+      font-size: 18px;
       backdrop-filter: blur(4px);
       border: 1px solid rgba(255, 255, 255, 0.3);
       transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
     }
     .btn-copy:hover .btn-icon-wrapper {
-      transform: scale(1.06);
-      background: rgba(255, 255, 255, 0.28);
+      transform: scale(1.08);
+      background: rgba(255, 255, 255, 0.3);
     }
     .copied {
       background: linear-gradient(135deg, #059669, #047857) !important;
-      box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4) !important;
+      box-shadow: 0 12px 28px -6px rgba(5, 150, 105, 0.4) !important;
     }
 
-    /* Shop Sinh Động (BinhLuu Store) */
-    @keyframes giftWiggle {
-      0%, 100% { transform: rotate(0deg) scale(1); }
-      15% { transform: rotate(-10deg) scale(1.1); }
-      30% { transform: rotate(10deg) scale(1.1); }
-      45% { transform: rotate(-6deg) scale(1.05); }
-      60% { transform: rotate(4deg) scale(1.02); }
-    }
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35); }
-      50% { box-shadow: 0 6px 20px rgba(249, 115, 22, 0.55); }
-    }
-    .shop-vibrant {
-      margin-top: 22px;
-      padding: 16px 18px;
-      background: linear-gradient(135deg, #fffbfb 0%, #fff7ed 50%, #fef2f2 100%);
-      border: 1.5px solid #fecdd3;
-      border-radius: 20px;
+    /* VIP Pro Shop Showcase (Spacious, Crisp & High-End) */
+    .shop-pro {
+      margin-top: 24px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 18px;
       text-align: left;
-      box-shadow: 0 10px 25px -8px rgba(244, 63, 94, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      box-shadow: 0 8px 24px -6px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
-      overflow: hidden;
     }
-    .shop-vibrant::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #f43f5e, #fb923c, #fbbf24, #f43f5e);
-      background-size: 200% 100%;
-      animation: barShift 4s linear infinite;
-    }
-    @keyframes barShift {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
-    }
-    .shop-vibrant:hover {
-      border-color: #fda4af;
+    .shop-pro:hover {
+      border-color: #cbd5e1;
       transform: translateY(-2px);
-      box-shadow: 0 14px 30px -8px rgba(244, 63, 94, 0.2);
+      box-shadow: 0 14px 30px -6px rgba(15, 23, 42, 0.08);
     }
-    .shop-vibrant-left {
+    .shop-pro-left {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       min-width: 0;
     }
-    .shop-vibrant-icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, #fee2e2, #fed7aa);
+    .shop-pro-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      animation: giftWiggle 3.5s ease-in-out infinite;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
-    .shop-vibrant-content {
+    .shop-pro-content {
       min-width: 0;
     }
-    .shop-vibrant-header {
+    .shop-pro-header {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 5px;
+      flex-wrap: wrap;
     }
-    .shop-vibrant-title {
-      font-size: 14.5px;
+    .shop-pro-title {
+      font-size: 15px;
       font-weight: 800;
       color: #0f172a;
       letter-spacing: -0.01em;
     }
-    .badge-hot {
-      background: linear-gradient(135deg, #f43f5e, #fb923c);
+    .shop-pro-badge {
+      background: #0f172a;
       color: #ffffff;
       font-size: 10px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: 0 2px 6px rgba(244, 63, 94, 0.35);
-      white-space: nowrap;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
     }
     .shop-tags {
       display: flex;
@@ -263,153 +236,169 @@
     .tag-item {
       font-size: 11.5px;
       font-weight: 700;
-      padding: 2px 8px;
+      padding: 3px 9px;
       border-radius: 8px;
       display: inline-flex;
       align-items: center;
       gap: 3px;
       white-space: nowrap;
     }
-    .tag-locket {
-      background: #fef9c3;
-      color: #854d0e;
-      border: 1px solid #fde047;
-    }
-    .tag-capcut {
-      background: #f1f5f9;
-      color: #0f172a;
-      border: 1px solid #cbd5e1;
-    }
-    .tag-canva {
-      background: #e0f2fe;
-      color: #0369a1;
-      border: 1px solid #7dd3fc;
-    }
-    .tag-more {
-      background: #fdf2f8;
-      color: #be185d;
-      border: 1px solid #fbcfe8;
-    }
-    .shop-vibrant-deal {
-      font-size: 12px;
+    .tag-locket { background: #fef9c3; color: #854d0e; border: 1px solid #fde047; }
+    .tag-capcut { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; }
+    .tag-canva { background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc; }
+    .tag-more { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+    
+    .shop-pro-deal {
+      font-size: 12.5px;
       color: #475569;
       font-weight: 600;
     }
-    .shop-vibrant-deal strong {
+    .shop-pro-deal strong {
       color: #e11d48;
       font-weight: 800;
       background: #ffe4e6;
       padding: 1px 6px;
       border-radius: 6px;
     }
-    .btn-shop-vibrant {
+    .btn-shop-pro {
       padding: 10px 18px;
-      background: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
+      background: #0f172a;
       color: #ffffff !important;
       text-decoration: none;
       border-radius: 14px;
-      font-size: 13px;
-      font-weight: 800;
+      font-size: 13.5px;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 6px;
       white-space: nowrap;
       flex-shrink: 0;
-      animation: pulseGlow 2.5s ease-in-out infinite;
       transition: all 0.25s ease;
-      letter-spacing: 0.01em;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
     }
-    .btn-shop-vibrant:hover {
-      transform: translateY(-2px) scale(1.03);
-      filter: brightness(1.08);
-    }
-    .btn-shop-vibrant-arrow {
-      transition: transform 0.2s ease;
-    }
-    .btn-shop-vibrant:hover .btn-shop-vibrant-arrow {
-      transform: translateX(3px);
-    }
-    @media (max-width: 520px) {
-      .shop-vibrant {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .btn-shop-vibrant {
-        width: 100%;
-        justify-content: center;
-      }
+    .btn-shop-pro:hover {
+      background: #2563eb;
+      transform: translateX(2px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
     }
 
-    /* Video Hướng dẫn */
+    /* Guide Section (Structured & Spacious) */
+    .guide {
+      text-align: left;
+      margin-top: 28px;
+      background: #f8fafc;
+      border-radius: 24px;
+      padding: 26px 28px;
+      border: 1px solid #e2e8f0;
+    }
+    .guide-header {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.6;
+    }
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #dbeafe;
+      color: #1d4ed8;
+      font-weight: 800;
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .step-item strong { color: #0f172a; font-weight: 700; }
+    
+    .alert-box {
+      margin-top: 18px;
+      padding: 14px 16px;
+      background: #fefce8;
+      border: 1px solid #fef08a;
+      border-radius: 16px;
+      font-size: 13px;
+      color: #854d0e;
+      line-height: 1.55;
+    }
+    .alert-box code {
+      background: #fef08a;
+      color: #713f12;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-family: monospace;
+    }
+
+    /* Video Theater (High-Definition Viewing) */
     .video-section {
-      margin-top: 20px;
+      margin-top: 24px;
       text-align: left;
     }
     .video-section h3 {
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 14.5px;
+      font-weight: 800;
       color: #0f172a;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
     .video-wrapper {
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px #e2e8f0;
-      background: #000000;
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.25), 0 0 0 1px #0f172a;
+      background: #020617;
     }
     .video-player {
       width: 100%;
       height: auto;
-      max-height: 480px;
+      max-height: 520px;
       display: block;
-      border-radius: 18px;
-    }
-
-    @media (max-width: 520px) {
-      .shop-simple {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .btn-shop-simple {
-        width: 100%;
-        justify-content: center;
-        margin-top: 4px;
-      }
-    }
-
-    /* Guide */
-    .guide {
-      text-align: left;
-      margin-top: 24px;
-      background: #f8fafc;
-      border-radius: 18px;
-      padding: 20px;
-      border: 1px solid #e2e8f0;
-    }
-    .guide h3 { font-size: 14px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-    .guide ol { padding-left: 20px; font-size: 13.5px; color: #475569; line-height: 1.75; font-weight: 500; }
-    .guide ol li strong { color: #0f172a; font-weight: 700; }
-    .alert-box {
-      margin-top: 14px;
-      padding: 12px 14px;
-      background: #fefce8;
-      border: 1px solid #fef08a;
-      border-radius: 12px;
-      font-size: 12.5px;
-      color: #854d0e;
-      line-height: 1.5;
+      border-radius: 20px;
     }
 
     /* Footer Author */
     .footer-author {
-      margin-top: 22px;
+      margin-top: 26px;
       font-size: 13px;
       color: #94a3b8;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 680px) {
+      body { padding: 20px 12px; }
+      .card { padding: 32px 20px 24px; }
+      .shop-pro {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-shop-pro {
+        width: 100%;
+        justify-content: center;
+      }
+      h1 { font-size: 23px; }
     }
   </style>
 </head>
@@ -417,15 +406,15 @@
   <div class="shell">
     <div class="card">
       <div class="badge-top">
-        <div class="badge">VHU Portal Fix Tool</div>
+        <div class="badge">VHU Portal Fix Tool • v2.5</div>
       </div>
       <h1>Mở Khóa Cập Nhật Thông Tin VHU</h1>
-      <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options).</p>
+      <p class="desc">Tự động sửa lỗi kẹt ô Phường Xã (No options) & mở sổ menu trực tiếp trên form.</p>
 
       <div class="urgent-notice">
         <div class="notice-icon-wrapper">📢</div>
         <div>
-          <strong>LƯU Ý:</strong> Cách này chỉ dùng tạm thời chờ thông báo nếu mn cần vào portal gấp thôi nha!
+          <strong>LƯU Ý:</strong> Cách này dùng tạm thời trong khi chờ thông báo chính thức nếu bạn cần vào portal gấp nhé!
         </div>
       </div>
 
@@ -434,39 +423,50 @@
         <span id="btnIcon" class="btn-icon-wrapper">📋</span>
       </button>
 
-      <!-- GIAN HÀNG SINH ĐỘNG: BINHLUU STORE -->
-      <div class="shop-vibrant">
-        <div class="shop-vibrant-left">
-          <div class="shop-vibrant-icon">🎁</div>
-          <div class="shop-vibrant-content">
-            <div class="shop-vibrant-header">
-              <span class="shop-vibrant-title">BinhLuu Store</span>
-              <span class="badge-hot">🔥 HOT DEAL</span>
+      <!-- GIAN HÀNG VIP PRO: BINHLUU STORE -->
+      <div class="shop-pro">
+        <div class="shop-pro-left">
+          <div class="shop-pro-icon">🛍️</div>
+          <div class="shop-pro-content">
+            <div class="shop-pro-header">
+              <span class="shop-pro-title">BinhLuu Store</span>
+              <span class="shop-pro-badge">Official Store</span>
             </div>
             <div class="shop-tags">
               <span class="tag-item tag-locket">💛 Locket Gold</span>
               <span class="tag-item tag-capcut">🎬 CapCut Pro</span>
-              <span class="tag-item tag-canva">🎨 Canva</span>
+              <span class="tag-item tag-canva">🎨 Canva Pro</span>
               <span class="tag-item tag-more">+ Nhiều loại TK khác</span>
             </div>
-            <div class="shop-vibrant-deal">
+            <div class="shop-pro-deal">
               Ưu đãi: Mua tài khoản bất kỳ <strong>tặng ngay 1 tháng Canva Pro</strong>
             </div>
           </div>
         </div>
-        <a href="https://binhluu.ai.studio/" target="_blank" class="btn-shop-vibrant">
-          <span>Xem shop</span>
-          <span class="btn-shop-vibrant-arrow">&rarr;</span>
+        <a href="https://binhluu.ai.studio/" target="_blank" class="btn-shop-pro">
+          <span>Khám phá shop</span>
+          <span>&rarr;</span>
         </a>
       </div>
 
+      <!-- HƯỚNG DẪN CHI TIẾT & VIDEO THEATER -->
       <div class="guide">
-        <h3>📖 Hướng dẫn 3 bước cực dễ:</h3>
-        <ol>
-          <li>Bấm nút xanh ở trên để <strong>sao chép mã</strong>.</li>
-          <li>Mở trang portal VHU bị kẹt, nhấn phím <strong>F12</strong> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) &rarr; chọn tab <strong>Console</strong>.</li>
-          <li><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Các ô lỗi & ô Phường/Xã trên trang web sẽ <strong>tự động mở sổ menu xuống</strong> để bạn chọn trực tiếp trên form!</li>
-        </ol>
+        <div class="guide-header">📖 Hướng dẫn 3 bước cực dễ:</div>
+        <ul class="step-list">
+          <li class="step-item">
+            <span class="step-num">1</span>
+            <div>Bấm nút xanh ở trên để <strong>sao chép mã fix</strong> vào bộ nhớ tạm.</div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">2</span>
+            <div>Mở trang portal VHU bị kẹt, nhấn phím <strong>F12</strong> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) &rarr; chọn tab <strong>Console</strong>.</div>
+          </li>
+          <li class="step-item">
+            <span class="step-num">3</span>
+            <div><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Các ô lỗi & ô Phường/Xã trên trang web sẽ <strong>tự động mở sổ menu xuống</strong> để bạn chọn trực tiếp trên form!</div>
+          </li>
+        </ul>
+        
         <div class="alert-box">
           <strong>⚠️ Lưu ý nếu Chrome/Edge chặn không cho dán:</strong><br>
           Nếu thấy Chrome hiện dòng chữ đỏ cảnh báo <em>"Warning: Don't paste code..."</em> và không cho bấm Ctrl+V, bạn chỉ cần <strong>gõ chữ <code>allow pasting</code> vào Console rồi bấm Enter</strong>. Sau đó bấm Ctrl+V lại là được nhé!
@@ -483,7 +483,8 @@
           </div>
         </div>
       </div>
-      <div class="footer-author">@binhluu</div>
+
+      <div class="footer-author">@binhluu • Phát triển vì cộng đồng sinh viên VHU</div>
     </div>
   </div>
 
@@ -703,33 +704,37 @@
 
     shopContent.innerHTML = \`
       <style>
-        @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.92) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        .vhu-gift { font-size: 38px; line-height: 1; margin-bottom: 10px; display: inline-block; }
-        .vhu-title { font-size: 18.5px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-        .vhu-badge { display: inline-block; background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-        .vhu-box-msg { font-size: 13.5px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
+        @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .vhu-gift-box { width: 56px; height: 56px; border-radius: 18px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 14px; box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.15); }
+        .vhu-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em; }
+        .vhu-badge { display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 14px; border: 1px solid #a7f3d0; }
+        .vhu-box-msg { font-size: 13.5px; color: #475569; line-height: 1.6; margin-bottom: 18px; padding: 16px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
         .vhu-box-msg strong { color: #0f172a; }
-        .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #e11d48; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; }
-        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #e11d48 0%, #f97316 100%); color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
-        .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); }
+        .vhu-tags-wrap { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 10px 0 12px; }
+        .vhu-tag { padding: 3px 8px; border-radius: 8px; font-size: 11.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+        .vhu-deal-pill { display: block; margin-top: 8px; padding: 7px 12px; background: #fff1f2; border-radius: 10px; color: #be123c; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; letter-spacing: 0.01em; }
+        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 20px; background: #0f172a; color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3); transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.4); }
         .vhu-btn-skip { display: block; width: 100%; padding: 10px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
         .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; }
       </style>
-      <div class="vhu-gift">🎁</div>
-      <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Ưu Đãi Sinh Viên VHU</div>
+      <div class="vhu-gift-box">🎉</div>
+      <div class="vhu-title">ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
+      <div class="vhu-badge">✓ Dữ liệu hợp lệ trên máy chủ VHU</div>
       <div class="vhu-box-msg">
-        Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:10px 0 10px;">
-          <span style="background:#fef9c3; color:#854d0e; border:1px solid #fde047; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">💛 Locket Gold</span>
-          <span style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎬 CapCut Pro</span>
-          <span style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎨 Canva</span>
-          <span style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">+ Nhiều loại TK khác</span>
+        Bạn đã mở khóa Cổng thông tin sinh viên VHU thành công.<br>
+        Ghé thăm <strong>BinhLuu Store</strong> để khám phá các gói tài khoản bản quyền giá học sinh/sinh viên:
+        <div class="vhu-tags-wrap">
+          <span class="vhu-tag" style="background:#fef9c3; color:#854d0e; border:1px solid #fde047;">💛 Locket Gold</span>
+          <span class="vhu-tag" style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1;">🎬 CapCut Pro</span>
+          <span class="vhu-tag" style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc;">🎨 Canva Pro</span>
+          <span class="vhu-tag" style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8;">+ Nhiều loại TK khác</span>
         </div>
-        <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
+        <span class="vhu-deal-pill">🎁 Ưu đãi: Mua tài khoản bất kỳ tặng ngay 1 tháng Canva Pro</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">
-        🛒 Xem Shop Nhận Quà Liền &rarr;
+        <span>Ghé Thăm BinhLuu Store</span>
+        <span>&rarr;</span>
       </a>
       <button id="vhuSkipButton" class="vhu-btn-skip">
         Vào thẳng Portal Sinh Viên

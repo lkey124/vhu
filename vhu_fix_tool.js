@@ -213,33 +213,37 @@
 
     shopContent.innerHTML = `
       <style>
-        @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.92) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        .vhu-gift { font-size: 38px; line-height: 1; margin-bottom: 10px; display: inline-block; }
-        .vhu-title { font-size: 18.5px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
-        .vhu-badge { display: inline-block; background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-        .vhu-box-msg { font-size: 13.5px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
+        @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.95) translateY(8px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .vhu-gift-box { width: 56px; height: 56px; border-radius: 18px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 28px; margin: 0 auto 14px; box-shadow: 0 8px 16px -4px rgba(37, 99, 235, 0.15); }
+        .vhu-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 6px; letter-spacing: -0.02em; }
+        .vhu-badge { display: inline-flex; align-items: center; gap: 6px; background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; margin-bottom: 14px; border: 1px solid #a7f3d0; }
+        .vhu-box-msg { font-size: 13.5px; color: #475569; line-height: 1.6; margin-bottom: 18px; padding: 16px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
         .vhu-box-msg strong { color: #0f172a; }
-        .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #e11d48; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; }
-        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #e11d48 0%, #f97316 100%); color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
-        .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); }
+        .vhu-tags-wrap { display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; margin: 10px 0 12px; }
+        .vhu-tag { padding: 3px 8px; border-radius: 8px; font-size: 11.5px; font-weight: 700; display: inline-flex; align-items: center; gap: 4px; }
+        .vhu-deal-pill { display: block; margin-top: 8px; padding: 7px 12px; background: #fff1f2; border-radius: 10px; color: #be123c; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; letter-spacing: 0.01em; }
+        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 20px; background: #0f172a; color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 8px 20px -4px rgba(15, 23, 42, 0.3); transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); box-shadow: 0 10px 25px -4px rgba(37, 99, 235, 0.4); }
         .vhu-btn-skip { display: block; width: 100%; padding: 10px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
         .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; }
       </style>
-      <div class="vhu-gift">🎁</div>
-      <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Ưu Đãi Sinh Viên VHU</div>
+      <div class="vhu-gift-box">🎉</div>
+      <div class="vhu-title">ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
+      <div class="vhu-badge">✓ Dữ liệu hợp lệ trên máy chủ VHU</div>
       <div class="vhu-box-msg">
-        Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:10px 0 10px;">
-          <span style="background:#fef9c3; color:#854d0e; border:1px solid #fde047; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">💛 Locket Gold</span>
-          <span style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎬 CapCut Pro</span>
-          <span style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎨 Canva</span>
-          <span style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">+ Nhiều loại TK khác</span>
+        Bạn đã mở khóa Cổng thông tin sinh viên VHU thành công.<br>
+        Ghé thăm <strong>BinhLuu Store</strong> để khám phá các gói tài khoản bản quyền giá học sinh/sinh viên:
+        <div class="vhu-tags-wrap">
+          <span class="vhu-tag" style="background:#fef9c3; color:#854d0e; border:1px solid #fde047;">💛 Locket Gold</span>
+          <span class="vhu-tag" style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1;">🎬 CapCut Pro</span>
+          <span class="vhu-tag" style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc;">🎨 Canva Pro</span>
+          <span class="vhu-tag" style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8;">+ Nhiều loại TK khác</span>
         </div>
-        <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
+        <span class="vhu-deal-pill">🎁 Ưu đãi: Mua tài khoản bất kỳ tặng ngay 1 tháng Canva Pro</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">
-        🛒 Xem Shop Nhận Quà Liền &rarr;
+        <span>Ghé Thăm BinhLuu Store</span>
+        <span>&rarr;</span>
       </a>
       <button id="vhuSkipButton" class="vhu-btn-skip">
         Vào thẳng Portal Sinh Viên
