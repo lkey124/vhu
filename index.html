@@ -301,7 +301,7 @@
         <ol>
           <li>Bấm nút xanh ở trên để <strong>sao chép mã</strong>.</li>
           <li>Mở trang portal VHU bị kẹt, nhấn phím <strong>F12</strong> (hoặc chuột phải chọn <strong>Kiểm tra</strong>) &rarr; chọn tab <strong>Console</strong>.</li>
-          <li><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Màn hình sẽ hiện bảng chọn thông tin với <strong>đầy đủ các menu sổ xuống (Dropdown)</strong> để bạn chọn nhanh và mở khóa portal!</li>
+          <li><strong>Dán (Ctrl + V)</strong> mã vào rồi bấm <strong>Enter</strong>. Màn hình sẽ hiện bảng chọn thông tin với <strong>đầy đủ menu sổ xuống (Dropdown)</strong> để bạn chọn nhanh và mở khóa portal!</li>
         </ol>
         <div class="alert-box">
           <strong>⚠️ Lưu ý nếu Chrome/Edge chặn không cho dán:</strong><br>
@@ -318,47 +318,7 @@
 
   // 1. Tìm React Fiber của form
   const formBox = document.getElementById('FormCapNhatBatBuoc') || document.querySelector('form');
-  const fiberKey = Object.keys(formBox || {}).find(k => k.startsWith('__reactFiber {
-      navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById('copyBtn');
-        const icon = document.getElementById('btnIcon');
-        const text = document.getElementById('btnText');
-        btn.classList.add('copied');
-        icon.innerText = "✅";
-        text.innerText = "ĐÃ SAO CHÉP THÀNH CÔNG!";
-        setTimeout(() => {
-          btn.classList.remove('copied');
-          icon.innerText = "📋";
-          text.innerText = "BẤM ĐỂ SAO CHÉP MÃ FIX";
-        }, 3000);
-      }).catch(err => {
-        alert("Không thể tự động sao chép, bạn hãy vào GitHub để copy nhé!");
-      });
-    }
-  </script>
-</body>
-</html>
-) || k.startsWith('__reactInternalInstance {
-      navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById('copyBtn');
-        const icon = document.getElementById('btnIcon');
-        const text = document.getElementById('btnText');
-        btn.classList.add('copied');
-        icon.innerText = "✅";
-        text.innerText = "ĐÃ SAO CHÉP THÀNH CÔNG!";
-        setTimeout(() => {
-          btn.classList.remove('copied');
-          icon.innerText = "📋";
-          text.innerText = "BẤM ĐỂ SAO CHÉP MÃ FIX";
-        }, 3000);
-      }).catch(err => {
-        alert("Không thể tự động sao chép, bạn hãy vào GitHub để copy nhé!");
-      });
-    }
-  </script>
-</body>
-</html>
-));
+  const fiberKey = Object.keys(formBox || {}).find(k => k.startsWith('__reactFiber$') || k.startsWith('__reactInternalInstance$'));
   let fiber = formBox ? formBox[fiberKey] : null;
   let targetFiber = null;
 
