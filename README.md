@@ -61,7 +61,7 @@ Xem video hướng dẫn trực quan các bước thao tác trên trình duyệt
 ## 🎁 Ưu Đãi Độc Quyền - BinhLuu Store
 
 Ghé thăm gian hàng tài khoản bản quyền giá sinh viên chính chủ:
-- **Sản phẩm nổi bật**: **Locket Gold**, **CapCut Pro**, Netflix 4K, ChatGPT Plus, YouTube Premium, Spotify... và nhiều tài khoản khác!
+- **Sản phẩm nổi bật**: **Locket Gold**, **CapCut Pro**, **Canva** và nhiều loại tài khoản khác!
 - 🔥 **ĐẶC BIỆT**: Mua tài khoản bất kỳ trên shop **TẶNG NGAY 1 THÁNG CANVA PRO** chính chủ!
 
 👉 **[🛒 GHÉ THĂM GIAN HÀNG BINHLUU STORE](https://binhluu.ai.studio/)**

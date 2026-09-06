@@ -227,10 +227,10 @@
       </style>
       <div class="vhu-gift">🎁</div>
       <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Locket Gold, CapCut & Nhiều TK Khác</div>
+      <div class="vhu-badge">BinhLuu Store • Locket Gold, CapCut, Canva & Nhiều TK Khác</div>
       <div class="vhu-box-msg">
         Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản Locket Gold, CapCut Pro & nhiều tài khoản bản quyền khác:<br>
+        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản Locket Gold, CapCut Pro, Canva & nhiều loại tài khoản khác:<br>
         <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">
