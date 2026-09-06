@@ -220,17 +220,22 @@
         .vhu-box-msg { font-size: 13.5px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
         .vhu-box-msg strong { color: #0f172a; }
         .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #e11d48; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; }
-        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: #0f172a; color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #e11d48 0%, #f97316 100%); color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
         .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); }
         .vhu-btn-skip { display: block; width: 100%; padding: 10px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
         .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; }
       </style>
       <div class="vhu-gift">🎁</div>
       <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Locket Gold, CapCut, Canva & Nhiều TK Khác</div>
+      <div class="vhu-badge">BinhLuu Store • Ưu Đãi Sinh Viên VHU</div>
       <div class="vhu-box-msg">
         Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản Locket Gold, CapCut Pro, Canva & nhiều loại tài khoản khác:<br>
+        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:10px 0 10px;">
+          <span style="background:#fef9c3; color:#854d0e; border:1px solid #fde047; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">💛 Locket Gold</span>
+          <span style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎬 CapCut Pro</span>
+          <span style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎨 Canva</span>
+          <span style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">+ Nhiều loại TK khác</span>
+        </div>
         <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">

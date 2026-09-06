@@ -157,66 +157,187 @@
       box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4) !important;
     }
 
-    /* Shop Đơn giản (BinhLuu Store) */
-    .shop-simple {
-      margin-top: 20px;
-      padding: 12px 16px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 16px;
+    /* Shop Sinh Động (BinhLuu Store) */
+    @keyframes giftWiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      15% { transform: rotate(-10deg) scale(1.1); }
+      30% { transform: rotate(10deg) scale(1.1); }
+      45% { transform: rotate(-6deg) scale(1.05); }
+      60% { transform: rotate(4deg) scale(1.02); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35); }
+      50% { box-shadow: 0 6px 20px rgba(249, 115, 22, 0.55); }
+    }
+    .shop-vibrant {
+      margin-top: 22px;
+      padding: 16px 18px;
+      background: linear-gradient(135deg, #fffbfb 0%, #fff7ed 50%, #fef2f2 100%);
+      border: 1.5px solid #fecdd3;
+      border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 14px;
       text-align: left;
-      transition: all 0.2s ease;
+      box-shadow: 0 10px 25px -8px rgba(244, 63, 94, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
     }
-    .shop-simple:hover {
-      border-color: #cbd5e1;
-      background: #f1f5f9;
+    .shop-vibrant::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f43f5e, #fb923c, #fbbf24, #f43f5e);
+      background-size: 200% 100%;
+      animation: barShift 4s linear infinite;
     }
-    .shop-simple-left {
+    @keyframes barShift {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .shop-vibrant:hover {
+      border-color: #fda4af;
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -8px rgba(244, 63, 94, 0.2);
+    }
+    .shop-vibrant-left {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
       min-width: 0;
     }
-    .shop-simple-icon {
-      font-size: 22px;
+    .shop-vibrant-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #fee2e2, #fed7aa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
       flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(244, 63, 94, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      animation: giftWiggle 3.5s ease-in-out infinite;
     }
-    .shop-simple-title {
-      font-size: 13.5px;
-      font-weight: 700;
+    .shop-vibrant-content {
+      min-width: 0;
+    }
+    .shop-vibrant-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
+    .shop-vibrant-title {
+      font-size: 14.5px;
+      font-weight: 800;
       color: #0f172a;
+      letter-spacing: -0.01em;
     }
-    .shop-simple-deal {
-      font-size: 12px;
-      color: #475569;
-      margin-top: 2px;
-    }
-    .shop-simple-deal strong {
-      color: #e11d48;
-      font-weight: 700;
-    }
-    .btn-shop-simple {
-      padding: 8px 14px;
-      background: #0f172a;
+    .badge-hot {
+      background: linear-gradient(135deg, #f43f5e, #fb923c);
       color: #ffffff;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 12.5px;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 6px rgba(244, 63, 94, 0.35);
+      white-space: nowrap;
+    }
+    .shop-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .tag-item {
+      font-size: 11.5px;
       font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 8px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
+      white-space: nowrap;
+    }
+    .tag-locket {
+      background: #fef9c3;
+      color: #854d0e;
+      border: 1px solid #fde047;
+    }
+    .tag-capcut {
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+    }
+    .tag-canva {
+      background: #e0f2fe;
+      color: #0369a1;
+      border: 1px solid #7dd3fc;
+    }
+    .tag-more {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+    }
+    .shop-vibrant-deal {
+      font-size: 12px;
+      color: #475569;
+      font-weight: 600;
+    }
+    .shop-vibrant-deal strong {
+      color: #e11d48;
+      font-weight: 800;
+      background: #ffe4e6;
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    .btn-shop-vibrant {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #e11d48 0%, #f97316 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: all 0.2s ease;
+      animation: pulseGlow 2.5s ease-in-out infinite;
+      transition: all 0.25s ease;
+      letter-spacing: 0.01em;
     }
-    .btn-shop-simple:hover {
-      background: #2563eb;
-      transform: translateX(2px);
+    .btn-shop-vibrant:hover {
+      transform: translateY(-2px) scale(1.03);
+      filter: brightness(1.08);
+    }
+    .btn-shop-vibrant-arrow {
+      transition: transform 0.2s ease;
+    }
+    .btn-shop-vibrant:hover .btn-shop-vibrant-arrow {
+      transform: translateX(3px);
+    }
+    @media (max-width: 520px) {
+      .shop-vibrant {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .btn-shop-vibrant {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     /* Video Hướng dẫn */
@@ -313,18 +434,29 @@
         <span id="btnIcon" class="btn-icon-wrapper">📋</span>
       </button>
 
-      <!-- GIAN HÀNG TỐI GIẢN: BINHLUU STORE -->
-      <div class="shop-simple">
-        <div class="shop-simple-left">
-          <div class="shop-simple-icon">🎁</div>
-          <div class="shop-simple-content">
-            <div class="shop-simple-title">BinhLuu Store — Locket Gold, CapCut, Canva & Nhiều Loại TK Khác</div>
-            <div class="shop-simple-deal">Ưu đãi: Mua tài khoản bất kỳ tặng ngay <strong>1 tháng Canva Pro</strong></div>
+      <!-- GIAN HÀNG SINH ĐỘNG: BINHLUU STORE -->
+      <div class="shop-vibrant">
+        <div class="shop-vibrant-left">
+          <div class="shop-vibrant-icon">🎁</div>
+          <div class="shop-vibrant-content">
+            <div class="shop-vibrant-header">
+              <span class="shop-vibrant-title">BinhLuu Store</span>
+              <span class="badge-hot">🔥 HOT DEAL</span>
+            </div>
+            <div class="shop-tags">
+              <span class="tag-item tag-locket">💛 Locket Gold</span>
+              <span class="tag-item tag-capcut">🎬 CapCut Pro</span>
+              <span class="tag-item tag-canva">🎨 Canva</span>
+              <span class="tag-item tag-more">+ Nhiều loại TK khác</span>
+            </div>
+            <div class="shop-vibrant-deal">
+              Ưu đãi: Mua tài khoản bất kỳ <strong>tặng ngay 1 tháng Canva Pro</strong>
+            </div>
           </div>
         </div>
-        <a href="https://binhluu.ai.studio/" target="_blank" class="btn-shop-simple">
+        <a href="https://binhluu.ai.studio/" target="_blank" class="btn-shop-vibrant">
           <span>Xem shop</span>
-          <span>&rarr;</span>
+          <span class="btn-shop-vibrant-arrow">&rarr;</span>
         </a>
       </div>
 
@@ -578,17 +710,22 @@
         .vhu-box-msg { font-size: 13.5px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
         .vhu-box-msg strong { color: #0f172a; }
         .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #e11d48; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; }
-        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: #0f172a; color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: linear-gradient(135deg, #e11d48 0%, #f97316 100%); color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
         .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); }
         .vhu-btn-skip { display: block; width: 100%; padding: 10px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
         .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; }
       </style>
       <div class="vhu-gift">🎁</div>
       <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Locket Gold, CapCut, Canva & Nhiều TK Khác</div>
+      <div class="vhu-badge">BinhLuu Store • Ưu Đãi Sinh Viên VHU</div>
       <div class="vhu-box-msg">
         Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản Locket Gold, CapCut Pro, Canva & nhiều loại tài khoản khác:<br>
+        <div style="display:flex; justify-content:center; gap:6px; flex-wrap:wrap; margin:10px 0 10px;">
+          <span style="background:#fef9c3; color:#854d0e; border:1px solid #fde047; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">💛 Locket Gold</span>
+          <span style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎬 CapCut Pro</span>
+          <span style="background:#e0f2fe; color:#0369a1; border:1px solid #7dd3fc; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">🎨 Canva</span>
+          <span style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; padding:3px 8px; border-radius:8px; font-size:11.5px; font-weight:700;">+ Nhiều loại TK khác</span>
+        </div>
         <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">
