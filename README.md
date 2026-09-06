@@ -55,13 +55,13 @@ Sao chép toàn bộ nội dung file [`vhu_fix_tool.js`](./vhu_fix_tool.js) ho�
 
 ---
 
-## 💖 Góc Nhờ Vả - Bình Chọn Ủng Hộ Nhóm UTG
+## 🎁 Ưu Đãi Độc Quyền - BinhLuu Store
 
-Nhóm chúng mình đang tham gia cuộc thi **Thiết kế Logo Kỷ niệm VHU 30 năm** của trường:
-- **Tác phẩm dự thi**: **82. Nhóm UTG**
-- *Thấy hay hãy giúp mình 1 bình chọn nha, để mình lên tiếp code đổi avatar lại cho các bạn lầm lỡ :))))* 🙏✨
+Ghé thăm gian hàng tài khoản bản quyền giá sinh viên chính chủ:
+- **Sản phẩm nổi bật**: Canva Pro, Netflix 4K UHD, ChatGPT Plus GPT-4o, CapCut Pro, Youtube Premium, Spotify Premium...
+- 🔥 **ĐẶC BIỆT**: Mua bất kỳ tài khoản nào tại shop được **TẶNG NGAY 1 THÁNG CANVA PRO** chính chủ 100%!
 
-👉 **[🥰 VOTE LIỀN CHO MÌNH NÈ](https://contest.vhu.edu.vn/posts/82-nhom-utg?game=thiet-ke-logo-ky-niem-vhu30&event=1&option=84)**
+👉 **[🛒 GHÉ THĂM GIAN HÀNG BINHLUU STORE](https://binhluu.ai.studio/)**
 
 ---
 
