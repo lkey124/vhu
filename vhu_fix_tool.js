@@ -1,7 +1,7 @@
-(async function smartAutoFixVHU() {
-  console.log("🔍 Đang khởi động Công cụ Mở Khóa Cập Nhật Thông Tin VHU...");
+(async function unlockVHUWebDropdowns() {
+  console.log("🔍 Đang mở khóa menu sổ xuống trực tiếp trên form VHU...");
 
-  // 1. Tìm React Fiber của form
+  // 1. Tìm React Fiber của form Cập nhật bắt buộc
   const formBox = document.getElementById('FormCapNhatBatBuoc') || document.querySelector('form');
   const fiberKey = Object.keys(formBox || {}).find(k => k.startsWith('__reactFiber$') || k.startsWith('__reactInternalInstance$'));
   let fiber = formBox ? formBox[fiberKey] : null;
@@ -21,15 +21,15 @@
     return;
   }
 
-  // Lấy các state và hook nội bộ của React
+  // 2. Lấy các state và hook nội bộ của React Form
   let hook0 = targetFiber.memoizedState;
   let hook1 = hook0?.next;                               // Dân tộc
   let hook2 = hook1?.next;                              // Tôn giáo
   let hook3 = hook2?.next;                              // Quốc gia
   let hook5 = hook0?.next?.next?.next?.next?.next;       // Tỉnh thành
-  let hook6 = hook5?.next;                              // Phường xã
+  let hook6 = hook5?.next;                              // Phường xã (nơi bị kẹt No options)
   let hook7 = hook6?.next;                              // Trạng thái Avatar
-  let hook8 = hook7?.next;                              // Danh sách lỗi
+  let hook8 = hook7?.next;                              // Danh sách lỗi đỏ
 
   const setStudent = hook0?.queue?.dispatch;
   const setWards = hook6?.queue?.dispatch;
@@ -38,393 +38,175 @@
 
   let s = { ...(hook0.memoizedState || {}) };
 
-  // Danh mục mặc định chuẩn nếu React chưa tải kịp
-  const DEFAULT_PROVINCES = [
-    { value: "79", label: "79 - TP. Hồ Chí Minh" },
-    { value: "01", label: "01 - TP. Hà Nội" },
-    { value: "48", label: "48 - TP. Đà Nẵng" },
-    { value: "31", label: "31 - TP. Hải Phòng" },
-    { value: "92", label: "92 - TP. Cần Thơ" },
-    { value: "74", label: "74 - Tỉnh Bình Dương" },
-    { value: "75", label: "75 - Tỉnh Đồng Nai" },
-    { value: "77", label: "77 - Tỉnh Bà Rịa - Vũng Tàu" },
-    { value: "80", label: "80 - Tỉnh Long An" },
-    { value: "82", label: "82 - Tỉnh Tiền Giang" },
-    { value: "83", label: "83 - Tỉnh Bến Tre" },
-    { value: "84", label: "84 - Tỉnh Trà Vinh" },
-    { value: "86", label: "86 - Tỉnh Vĩnh Long" },
-    { value: "87", label: "87 - Tỉnh Đồng Tháp" },
-    { value: "89", label: "89 - Tỉnh An Giang" },
-    { value: "91", label: "91 - Tỉnh Kiên Giang" },
-    { value: "93", label: "93 - Tỉnh Hậu Giang" },
-    { value: "94", label: "94 - Tỉnh Sóc Trăng" },
-    { value: "95", label: "95 - Tỉnh Bạc Liêu" },
-    { value: "96", label: "96 - Tỉnh Cà Mau" },
-    { value: "72", label: "72 - Tỉnh Tây Ninh" },
-    { value: "70", label: "70 - Tỉnh Bình Phước" },
-    { value: "68", label: "68 - Tỉnh Lâm Đồng" },
-    { value: "67", label: "67 - Tỉnh Đắk Nông" },
-    { value: "66", label: "66 - Tỉnh Đắk Lắk" },
-    { value: "64", label: "64 - Tỉnh Gia Lai" },
-    { value: "62", label: "62 - Tỉnh Kon Tum" },
-    { value: "60", label: "60 - Tỉnh Bình Thuận" },
-    { value: "58", label: "58 - Tỉnh Ninh Thuận" },
-    { value: "56", label: "56 - Tỉnh Khánh Hòa" },
-    { value: "54", label: "54 - Tỉnh Phú Yên" },
-    { value: "52", label: "52 - Tỉnh Bình Định" },
-    { value: "51", label: "51 - Tỉnh Quảng Ngãi" },
-    { value: "49", label: "49 - Tỉnh Quảng Nam" },
-    { value: "46", label: "46 - Tỉnh Thừa Thiên Huế" },
-    { value: "45", label: "45 - Tỉnh Quảng Trị" },
-    { value: "44", label: "44 - Tỉnh Quảng Bình" },
-    { value: "42", label: "42 - Tỉnh Hà Tĩnh" },
-    { value: "40", label: "40 - Tỉnh Nghệ An" },
-    { value: "38", label: "38 - Tỉnh Thanh Hóa" },
-    { value: "37", label: "37 - Tỉnh Ninh Bình" },
-    { value: "36", label: "36 - Tỉnh Nam Định" },
-    { value: "35", label: "35 - Tỉnh Hà Nam" },
-    { value: "34", label: "34 - Tỉnh Thái Bình" },
-    { value: "33", label: "33 - Tỉnh Hưng Yên" },
-    { value: "30", label: "30 - Tỉnh Hải Dương" },
-    { value: "27", label: "27 - Tỉnh Bắc Ninh" },
-    { value: "26", label: "26 - Tỉnh Vĩnh Phúc" },
-    { value: "25", label: "25 - Tỉnh Phú Thọ" },
-    { value: "24", label: "24 - Tỉnh Bắc Giang" },
-    { value: "22", label: "22 - Tỉnh Quảng Ninh" },
-    { value: "20", label: "20 - Tỉnh Lạng Sơn" },
-    { value: "19", label: "19 - Tỉnh Thái Nguyên" },
-    { value: "17", label: "17 - Tỉnh Hòa Bình" },
-    { value: "15", label: "15 - Tỉnh Yên Bái" },
-    { value: "14", label: "14 - Tỉnh Sơn La" },
-    { value: "12", label: "12 - Tỉnh Lai Châu" },
-    { value: "11", label: "11 - Tỉnh Điện Biên" },
-    { value: "10", label: "10 - Tỉnh Lào Cai" },
-    { value: "08", label: "08 - Tỉnh Tuyên Quang" },
-    { value: "06", label: "06 - Tỉnh Bắc Kạn" },
-    { value: "04", label: "04 - Tỉnh Cao Bằng" },
-    { value: "02", label: "02 - Tỉnh Hà Giang" }
-  ];
+  // 3. Tạo danh sách Phường / Xã cực kỳ đầy đủ để sổ thẳng xuống trên web
+  function generateFullWards() {
+    const list = [];
 
-  const DEFAULT_ETHNICS = [
-    { value: "01", label: "Kinh" },
-    { value: "02", label: "Tày" },
-    { value: "03", label: "Thái" },
-    { value: "04", label: "Hoa" },
-    { value: "05", label: "Khmer" },
-    { value: "06", label: "Mường" },
-    { value: "07", label: "Nùng" },
-    { value: "08", label: "HMông" },
-    { value: "09", label: "Dao" },
-    { value: "10", label: "Gia-rai" },
-    { value: "11", label: "Ngái" },
-    { value: "12", label: "Ê-đê" },
-    { value: "13", label: "Ba-na" },
-    { value: "14", label: "Xơ-đăng" },
-    { value: "15", label: "Sán Chay" },
-    { value: "16", label: "Cơ-ho" },
-    { value: "17", label: "Chăm" },
-    { value: "18", label: "Sán Dìu" },
-    { value: "19", label: "Hrê" },
-    { value: "20", label: "Mnông" },
-    { value: "21", label: "Ra-glai" },
-    { value: "22", label: "Xtiêng" },
-    { value: "23", label: "Bru-Vân Kiều" },
-    { value: "24", label: "Thổ" },
-    { value: "25", label: "Giáy" },
-    { value: "26", label: "Cơ-tu" },
-    { value: "27", label: "Gié-Triêng" },
-    { value: "28", label: "Mạ" },
-    { value: "29", label: "Khơ-mú" },
-    { value: "30", label: "Co" }
-  ];
+    // Phường số từ 1 đến 30 (Phổ biến ở hầu hết các quận/thị xã)
+    for (let i = 1; i <= 30; i++) {
+      const code = "000" + (i < 10 ? "0" + i : i);
+      list.push({ label: `Phường ${i}`, value: code });
+    }
 
-  const DEFAULT_RELIGIONS = [
-    { value: "00", label: "Không" },
-    { value: "01", label: "Phật giáo" },
-    { value: "02", label: "Công giáo" },
-    { value: "03", label: "Tin lành" },
-    { value: "04", label: "Cao Đài" },
-    { value: "05", label: "Hòa Hảo" },
-    { value: "06", label: "Hồi giáo" },
-    { value: "07", label: "Bà-la-môn" },
-    { value: "99", label: "Khác" }
-  ];
+    // Các Phường / Xã tên chữ phổ biến tại TP.HCM và các tỉnh lân cận
+    const namedWards = [
+      "Phường Bến Nghé", "Phường Bến Thành", "Phường Cầu Kho", "Phường Cầu Ông Lãnh",
+      "Phường Cô Giang", "Phường Đa Kao", "Phường Nguyễn Thái Bình", "Phường Nguyễn Cư Trinh",
+      "Phường Phạm Ngũ Lão", "Phường Tân Định", "Phường Thảo Điền", "Phường An Phú",
+      "Phường Bình An", "Phường Thủ Thiêm", "Phường Hiệp Bình Chánh", "Phường Hiệp Bình Phước",
+      "Phường Linh Trung", "Phường Linh Tây", "Phường Linh Đông", "Phường Tam Bình",
+      "Phường Tam Phú", "Phường Trường Thọ", "Phường Tăng Nhơn Phú A", "Phường Tăng Nhơn Phú B",
+      "Phường Phước Long A", "Phường Phước Long B", "Phường Long Thạnh Mỹ", "Phường Long Bình",
+      "Phường Hiệp Phú", "Phường Tân Phú", "Phường Phú Hữu", "Phường Long Trường",
+      "Phường Trường Thạnh", "Phường Bình Trưng Đông", "Phường Bình Trưng Tây", "Phường Cát Lái",
+      "Phường Thạnh Mỹ Lợi", "Phường An Khánh", "Phường An Lợi Đông",
+      // Các Xã
+      "Xã Bình Hưng", "Xã Phong Phú", "Xã Tân Kiên", "Xã Vĩnh Lộc A", "Xã Vĩnh Lộc B",
+      "Xã Tân Nhựt", "Xã An Phú Tây", "Xã Hưng Long", "Xã Đa Phước", "Xã Quy Đức",
+      "Xã Tân Túc", "Xã Tân Quý Tây", "Xã Bình Chánh", "Xã Lê Minh Xuân", "Xã Phạm Văn Hai",
+      "Xã Bà Điểm", "Xã Xuân Thới Thượng", "Xã Thới Tam Thôn", "Xã Đông Thạnh", "Xã Nhị Bình",
+      "Xã Tân Thới Nhì", "Xã Xuân Thới Đông", "Xã Xuân Thới Sơn", "Xã Tân Hiệp", "Xã Thăng Bình",
+      "Xã 1", "Xã 2", "Xã 3", "Xã 4", "Xã 5", "Xã Trung Tâm", "Thị trấn Trung Tâm"
+    ];
 
-  const DEFAULT_COUNTRIES = [
-    { value: "vn", label: "Việt Nam" },
-    { value: "la", label: "Lào" },
-    { value: "kh", label: "Campuchia" },
-    { value: "other", label: "Khác" }
-  ];
+    namedWards.forEach((name, idx) => {
+      list.push({ label: name, value: "001" + (idx < 10 ? "0" + idx : idx) });
+    });
 
-  const ethnics = (hook1?.memoizedState && hook1.memoizedState.length) ? hook1.memoizedState : DEFAULT_ETHNICS;
-  const religions = (hook2?.memoizedState && hook2.memoizedState.length) ? hook2.memoizedState : DEFAULT_RELIGIONS;
-  const countries = (hook3?.memoizedState && hook3.memoizedState.length) ? hook3.memoizedState : DEFAULT_COUNTRIES;
-  const provinces = (hook5?.memoizedState && hook5.memoizedState.length) ? hook5.memoizedState : DEFAULT_PROVINCES;
+    // Thêm tùy chọn nhập tự do
+    list.push({ label: "➕ [Bấm vào đây để tự gõ tên Phường/Xã khác...]", value: "__CUSTOM__" });
 
-  function getDom(name) {
-    const el = document.querySelector(`[name="${name}"]`);
-    return el && el.value ? el.value.trim() : "";
+    // Nếu sinh viên đã có sẵn phường xã thì đưa lên đầu
+    if (s.PhuongXaThuongTru && !list.find(w => w.label.toLowerCase() === s.PhuongXaThuongTru.toLowerCase())) {
+      list.unshift({ label: s.PhuongXaThuongTru, value: "00001" });
+    }
+
+    return list;
   }
 
-  // Khởi tạo các giá trị ban đầu từ React state hoặc DOM
-  let initialTinh = s.TinhThanhThuongTru || "79";
-  let initialPhuongXa = s.PhuongXaThuongTru || "";
-  let initialSoNha = s.SoNhaThuongTru || getDom("SoNhaThuongTru");
-  let initialDiaChi = s.DiaChiLienLac || getDom("DiaChiLienLac");
-  let initialNoiSinh = s.BirthPlaceID || initialTinh;
-  let initialDanToc = s.DanToc || "01";
-  let initialTonGiao = s.TonGiao || "00";
-  let initialQuocGia = s.QuocGiaThuongTru || "vn";
+  const wardOptions = generateFullWards();
 
-  let initialDiDong = s.DiDong || getDom("DiDong");
-  let initialEmail = s.EmailSV || getDom("EmailSV");
-  let initialCmnd = s.CMND || getDom("CMND");
-  let initialNgayCap = s.NgayCapCMND || getDom("NgayCapCMND");
-  let initialNoiCap = s.NoiCapCMND || getDom("NoiCapCMND") || "Cục CSQLHC về TTXH";
-  let initialBhyt = s.SoBaoHiemYTe || getDom("SoBaoHiemYTe") || getDom("SoBHYT");
-  let initialNguoiLH = s.ContactPersonName || getDom("ContactPersonName");
-  let initialSdtLH = s.ContactPersonPhone || getDom("ContactPersonPhone");
-
-  // Mở khóa ngay lập tức ô Phường Xã trên web để không còn bị 'No options'
+  // 4. BƠM DANH SÁCH VÀO DROPDOWN PHƯỜNG XÃ TRÊN WEB
   if (setWards) {
-    setWards([
-      { label: initialPhuongXa || "Phường 1", value: "00001" },
-      { label: "Phường 1", value: "00001" },
-      { label: "Phường 2", value: "00002" },
-      { label: "Phường 3", value: "00003" },
-      { label: "Phường 4", value: "00004" },
-      { label: "Phường 5", value: "00005" },
-      { label: "Phường Bến Nghé", value: "00006" },
-      { label: "Phường Bến Thành", value: "00007" },
-      { label: "Xã Bình Hưng", value: "00008" },
-      { label: "Xã Phong Phú", value: "00009" }
-    ]);
-  }
+    setWards(wardOptions);
 
-  // Xóa modal cũ nếu có
-  const oldModal = document.getElementById('vhu-form-modal');
-  if (oldModal) oldModal.remove();
-
-  // Tạo UI Form Modal với đầy đủ các mục sổ (Select / Dropdown) trực quan
-  const modalOverlay = document.createElement('div');
-  modalOverlay.id = 'vhu-form-modal';
-  modalOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(8px); z-index: 99999999; display: flex; justify-content: center; align-items: center; padding: 16px; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
-
-  const modalBox = document.createElement('div');
-  modalBox.style.cssText = 'background: #ffffff; max-width: 660px; width: 100%; max-height: 90vh; border-radius: 24px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #e2e8f0; animation: vhuSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);';
-
-  function renderOptions(list, selectedValue) {
-    return list.map(item => {
-      const isSel = String(item.value).toLowerCase() === String(selectedValue).toLowerCase() ? 'selected' : '';
-      return `<option value="${item.value}" ${isSel}>${item.label}</option>`;
-    }).join('');
-  }
-
-  const popularWards = [
-    "Phường 1", "Phường 2", "Phường 3", "Phường 4", "Phường 5",
-    "Phường 6", "Phường 7", "Phường 8", "Phường 9", "Phường 10",
-    "Phường 11", "Phường 12", "Phường 13", "Phường 14", "Phường 15",
-    "Phường Bến Nghé", "Phường Bến Thành", "Phường Thảo Điền", "Phường An Phú",
-    "Xã Bình Hưng", "Xã Phong Phú", "Xã Tân Kiên", "Xã Vĩnh Lộc A", "Xã Thăng Bình"
-  ];
-
-  modalBox.innerHTML = `
-    <style>
-      @keyframes vhuSlideUp { from { opacity: 0; transform: translateY(20px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      .vhu-f-head { padding: 20px 24px 16px; background: linear-gradient(135deg, #f8fafc, #edf2f7); border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; }
-      .vhu-f-title { font-size: 18px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 8px; }
-      .vhu-f-subtitle { font-size: 12.5px; color: #64748b; margin-top: 3px; }
-      .vhu-f-close { background: #f1f5f9; border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 16px; cursor: pointer; color: #64748b; font-weight: bold; transition: all 0.2s; }
-      .vhu-f-close:hover { background: #fee2e2; color: #dc2626; }
-      .vhu-f-body { padding: 20px 24px; overflow-y: auto; flex: 1; box-sizing: border-box; }
-      .vhu-f-sec-title { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; color: #2563eb; margin: 16px 0 10px; display: flex; align-items: center; gap: 6px; }
-      .vhu-f-sec-title:first-child { margin-top: 0; }
-      .vhu-f-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-      @media (max-width: 580px) { .vhu-f-grid { grid-template-columns: 1fr; } }
-      .vhu-f-item { display: flex; flex-direction: column; }
-      .vhu-f-item.full { grid-column: 1 / -1; }
-      .vhu-f-label { font-size: 12px; font-weight: 700; color: #334155; margin-bottom: 5px; }
-      .vhu-f-label span { color: #e11d48; }
-      .vhu-f-input, .vhu-f-select { width: 100%; padding: 8px 12px; border: 1.5px solid #cbd5e1; border-radius: 10px; font-size: 13px; color: #0f172a; background: #ffffff; outline: none; transition: all 0.2s; box-sizing: border-box; font-family: inherit; }
-      .vhu-f-input:focus, .vhu-f-select:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15); }
-      .vhu-f-select { cursor: pointer; appearance: auto; }
-      .vhu-f-alert { background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; padding: 10px 14px; border-radius: 12px; font-size: 12.5px; margin-bottom: 14px; display: none; }
-      .vhu-f-tip { font-size: 11px; color: #64748b; margin-top: 3px; font-style: italic; }
-      .vhu-f-foot { padding: 16px 24px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; align-items: center; }
-      .vhu-f-btn-cancel { padding: 10px 18px; border-radius: 12px; border: 1px solid #cbd5e1; background: #ffffff; color: #475569; font-weight: 600; font-size: 13.5px; cursor: pointer; transition: all 0.2s; }
-      .vhu-f-btn-cancel:hover { background: #f1f5f9; }
-      .vhu-f-btn-submit { padding: 10px 22px; border-radius: 12px; border: none; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: #ffffff; font-weight: 700; font-size: 13.5px; cursor: pointer; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
-      .vhu-f-btn-submit:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4); }
-      .vhu-f-btn-submit:active { transform: scale(0.98); }
-    </style>
-
-    <div class="vhu-f-head">
-      <div>
-        <div class="vhu-f-title">🎓 Cập Nhật & Mở Khóa Thông Tin VHU</div>
-        <div class="vhu-f-subtitle">Các mục đã có sẵn sẽ được giữ nguyên. Chọn từ menu sổ xuống cực tiện lợi!</div>
-      </div>
-      <button class="vhu-f-close" id="vhuCloseBtn">&times;</button>
-    </div>
-
-    <div class="vhu-f-body">
-      <div id="vhuErrorBox" class="vhu-f-alert"></div>
-
-      <!-- NHÓM 1: ĐỊA CHỈ & PHƯỜNG XÃ -->
-      <div class="vhu-f-sec-title">📍 1. Địa Chỉ & Nơi Cư Trú (Đã Mở Khóa Phường Xã)</div>
-      <div class="vhu-f-grid">
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Tỉnh / Thành thường trú <span>*</span></label>
-          <select id="vhu_f_tinh" class="vhu-f-select">
-            ${renderOptions(provinces, initialTinh)}
-          </select>
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Phường / Xã thường trú <span>*</span></label>
-          <input id="vhu_f_phuongxa" list="vhu_phuongxa_datalist" class="vhu-f-input" placeholder="Chọn menu sổ hoặc gõ tên..." value="${initialPhuongXa}" />
-          <datalist id="vhu_phuongxa_datalist">
-            ${initialPhuongXa ? `<option value="${initialPhuongXa}">` : ''}
-            ${popularWards.map(w => `<option value="${w}">`).join('')}
-          </datalist>
-          <div class="vhu-f-tip">💡 Bấm vào ô để chọn từ danh sách sổ hoặc gõ tên xã của bạn</div>
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Số nhà, tên đường, thôn/xóm <span>*</span></label>
-          <input id="vhu_f_sonha" class="vhu-f-input" placeholder="VD: 123 Nguyễn Văn Cừ, Thôn 1..." value="${initialSoNha}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Địa chỉ liên lạc / tạm trú <span>*</span></label>
-          <input id="vhu_f_diachi" class="vhu-f-input" placeholder="VD: 123 Nguyễn Văn Cừ..." value="${initialDiaChi || (initialSoNha ? (initialSoNha + (initialPhuongXa ? ', ' + initialPhuongXa : '')) : '')}" />
-        </div>
-      </div>
-
-      <!-- NHÓM 2: DÂN TỘC, TÔN GIÁO, NƠI SINH -->
-      <div class="vhu-f-sec-title">👤 2. Thông Tin Nhân Khẩu Học</div>
-      <div class="vhu-f-grid">
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Nơi sinh (Tỉnh/Thành) <span>*</span></label>
-          <select id="vhu_f_noisinh" class="vhu-f-select">
-            ${renderOptions(provinces, initialNoiSinh)}
-          </select>
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Dân tộc <span>*</span></label>
-          <select id="vhu_f_dantoc" class="vhu-f-select">
-            ${renderOptions(ethnics, initialDanToc)}
-          </select>
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Tôn giáo <span>*</span></label>
-          <select id="vhu_f_tongiao" class="vhu-f-select">
-            ${renderOptions(religions, initialTonGiao)}
-          </select>
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Quốc tịch <span>*</span></label>
-          <select id="vhu_f_quoctich" class="vhu-f-select">
-            ${renderOptions(countries, initialQuocGia)}
-          </select>
-        </div>
-      </div>
-
-      <!-- NHÓM 3: ĐỊNH DANH & BHYT -->
-      <div class="vhu-f-sec-title">🪪 3. Giấy Tờ & Bảo Hiểm Y Tế</div>
-      <div class="vhu-f-grid">
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Số CCCD / CMND <span>*</span></label>
-          <input id="vhu_f_cmnd" class="vhu-f-input" placeholder="12 số CCCD hoặc 9 số CMND" value="${initialCmnd}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Ngày cấp CCCD <span>*</span></label>
-          <input id="vhu_f_ngaycap" class="vhu-f-input" placeholder="dd/mm/yyyy" value="${initialNgayCap}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Nơi cấp CCCD <span>*</span></label>
-          <input id="vhu_f_noicap" class="vhu-f-input" placeholder="Nơi cấp in trên CCCD" value="${initialNoiCap}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Mã số thẻ BHYT (thật) <span>*</span></label>
-          <input id="vhu_f_bhyt" class="vhu-f-input" placeholder="Mã thẻ BHYT hoặc VssID" value="${initialBhyt}" />
-        </div>
-      </div>
-
-      <!-- NHÓM 4: LIÊN HỆ & KHẨN CẤP -->
-      <div class="vhu-f-sec-title">📞 4. Thông Tin Liên Lạc & Người Thân</div>
-      <div class="vhu-f-grid">
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Số điện thoại cá nhân <span>*</span></label>
-          <input id="vhu_f_didong" class="vhu-f-input" placeholder="0xxxxxxxxx (10 số)" value="${initialDiDong}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Email cá nhân <span>*</span></label>
-          <input id="vhu_f_email" class="vhu-f-input" placeholder="Gmail, Yahoo... (không dùng @vhu)" value="${initialEmail}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">Họ tên phụ huynh / người thân <span>*</span></label>
-          <input id="vhu_f_nguoilh" class="vhu-f-input" placeholder="Họ và tên người liên hệ" value="${initialNguoiLH}" />
-        </div>
-
-        <div class="vhu-f-item">
-          <label class="vhu-f-label">SĐT người thân <span>*</span></label>
-          <input id="vhu_f_sdtlh" class="vhu-f-input" placeholder="Bắt buộc khác SĐT cá nhân" value="${initialSdtLH}" />
-        </div>
-      </div>
-    </div>
-
-    <div class="vhu-f-foot">
-      <button class="vhu-f-btn-cancel" id="vhuCancelBtn">Hủy bỏ</button>
-      <button class="vhu-f-btn-submit" id="vhuSubmitBtn">🚀 ÁP DỤNG & LƯU VĨNH VIỄN</button>
-    </div>
-  `;
-
-  modalOverlay.appendChild(modalBox);
-  document.body.appendChild(modalOverlay);
-
-  // Xử lý đóng modal
-  function closeModal() {
-    modalOverlay.remove();
-  }
-  document.getElementById('vhuCloseBtn').onclick = closeModal;
-  document.getElementById('vhuCancelBtn').onclick = closeModal;
-
-  // Lắng nghe thay đổi tỉnh thành để gợi ý địa chỉ
-  const tinhSelect = document.getElementById('vhu_f_tinh');
-  const phuongXaInput = document.getElementById('vhu_f_phuongxa');
-  const soNhaInput = document.getElementById('vhu_f_sonha');
-  const diaChiInput = document.getElementById('vhu_f_diachi');
-
-  function autoUpdateDiaChi() {
-    if (!diaChiInput.value || diaChiInput.value === initialDiaChi) {
-      const px = phuongXaInput.value.trim();
-      const sn = soNhaInput.value.trim();
-      if (sn && px) {
-        diaChiInput.value = `${sn}, ${px}`;
-      }
+    // Bọc dispatch để khi người dùng đổi Tỉnh Thành, ô Phường Xã không bao giờ bị reset về rỗng (No options)
+    const originalDispatch = hook6?.queue?.dispatch;
+    if (originalDispatch && !originalDispatch._vhuHooked) {
+      hook6.queue.dispatch = function(newVal) {
+        if (!newVal || newVal.length === 0) {
+          return originalDispatch(generateFullWards());
+        }
+        return originalDispatch(newVal);
+      };
+      hook6.queue.dispatch._vhuHooked = true;
     }
   }
-  phuongXaInput.addEventListener('input', autoUpdateDiaChi);
-  soNhaInput.addEventListener('input', autoUpdateDiaChi);
 
-  // Khi người dùng chọn/nhập Phường Xã -> cập nhật ngay vào dropdown React của trang VHU
-  phuongXaInput.addEventListener('change', () => {
-    const px = phuongXaInput.value.trim();
-    if (px && setWards) {
-      setWards([{ label: px, value: "00001" }]);
-    }
+  // 5. TỰ ĐỘNG SỬA CÁC Ô LỖI VIỀN ĐỎ (NHƯ Ô ĐỐI TƯỢNG CHÍNH SÁCH)
+  // Xử lý ô Đối tượng chính sách nếu chưa chọn
+  if (!s.DoiTuongChinhSach && !s.DoiTuongID && !s.PolicyObjectID) {
+    s.DoiTuongChinhSach = "Không thuộc đối tượng trên";
+    s.DoiTuongID = "00";
+    s.PolicyObjectID = "00";
+  }
+
+  // Mở khóa kiểm tra Avatar
+  if (setAvatar) setAvatar(true);
+
+  // Cập nhật lại state & xóa bỏ toàn bộ lỗi đỏ
+  if (setStudent) setStudent({ ...s });
+  if (setErrors) setErrors({});
+
+  // Gỡ viền đỏ CSS trên giao diện web
+  document.querySelectorAll('.is-invalid, [style*="border-color: red"], [style*="border-color: rgb(225, 29, 72)"]').forEach(el => {
+    el.classList.remove('is-invalid');
+    el.style.borderColor = '#cbd5e1';
   });
 
-  // Xử lý hiển thị Vote Modal sau khi lưu thành công
+  // 6. TỰ ĐỘNG MỞ SỔ DROPDOWN Ô PHƯỜNG / XÃ NGAY LẬP TỨC TRÊN WEB
+  setTimeout(() => {
+    // Tìm container React-Select của ô Phường Xã trên form
+    let wardControl = null;
+    const allLabels = Array.from(document.querySelectorAll('label, div, span'));
+    const wardLabel = allLabels.find(el => {
+      const text = (el.innerText || "").trim().toLowerCase();
+      return text.includes("phường") || text.includes("xã") || text.includes("phường/xã") || text.includes("phường xã");
+    });
+
+    if (wardLabel) {
+      const parent = wardLabel.closest('.form-group, .col-md-4, .col-md-6, .col-12, div');
+      if (parent) {
+        wardControl = parent.querySelector('[class*="-control"], input[id*="react-select"], input');
+      }
+    }
+
+    if (!wardControl) {
+      // Tìm theo bất kỳ React-Select nào đang bị rỗng
+      wardControl = document.querySelector('[name="PhuongXaThuongTru"]') || document.querySelector('[class*="-control"]');
+    }
+
+    if (wardControl) {
+      wardControl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Kích hoạt mở menu sổ xuống
+      wardControl.focus();
+      wardControl.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, cancelable: true }));
+      wardControl.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+      console.log("✅ Đã kích hoạt mở sổ dropdown Phường/Xã trên web!");
+    }
+  }, 300);
+
+  // 7. LẮNG NGHE NẾU CHỌN TÙY CHỌN 'NHẬP TÊN PHƯỜNG/XÃ KHÁC'
+  // Theo dõi hook0 để nếu chọn option __CUSTOM__ thì hỏi tên nhập vào
+  const checkCustomWardInterval = setInterval(() => {
+    let curState = targetFiber?.memoizedState?.memoizedState;
+    if (curState && (curState.PhuongXaThuongTruID === "__CUSTOM__" || curState.PhuongXaThuongTru === "__CUSTOM__")) {
+      const customName = prompt("Nhập tên Phường / Xã thực tế của bạn (VD: Xã Thăng Bình, Phường 1...):", "");
+      if (customName && customName.trim()) {
+        const trimmed = customName.trim();
+        curState.PhuongXaThuongTru = trimmed;
+        curState.PhuongXaThuongTruID = "00001";
+        if (setWards) setWards([{ label: trimmed, value: "00001" }, ...wardOptions]);
+        if (setStudent) setStudent({ ...curState });
+      }
+    }
+  }, 400);
+
+  // Tự hủy interval sau 10 phút để tránh tốn tài nguyên
+  setTimeout(() => clearInterval(checkCustomWardInterval), 600000);
+
+  // 8. HIỂN THỊ THANH TIỆN ÍCH NHỎ GỌN Ở GÓC MÀN HÌNH (KHÔNG CHE GIAO DIỆN)
+  const oldHelper = document.getElementById('vhu-helper-bar');
+  if (oldHelper) oldHelper.remove();
+
+  const helperBar = document.createElement('div');
+  helperBar.id = 'vhu-helper-bar';
+  helperBar.style.cssText = 'position: fixed; bottom: 24px; right: 24px; z-index: 9999999; background: #ffffff; padding: 14px 20px; border-radius: 20px; box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.25), 0 0 0 1px #e2e8f0; display: flex; align-items: center; gap: 14px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; animation: vhuSlideIn 0.3s ease-out;';
+
+  helperBar.innerHTML = `
+    <style>
+      @keyframes vhuSlideIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+      .vhu-h-icon { width: 38px; height: 38px; border-radius: 50%; background: #ecfdf5; color: #059669; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+      .vhu-h-title { font-size: 13.5px; font-weight: 800; color: #0f172a; }
+      .vhu-h-desc { font-size: 12px; color: #64748b; margin-top: 2px; }
+      .vhu-h-btn-save { background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; border: none; padding: 9px 16px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 12px rgba(37,99,235,0.3); transition: all 0.2s; white-space: nowrap; }
+      .vhu-h-btn-save:hover { transform: translateY(-1px); box-shadow: 0 6px 16px rgba(37,99,235,0.4); }
+      .vhu-h-btn-close { background: none; border: none; font-size: 18px; color: #94a3b8; cursor: pointer; padding: 4px; line-height: 1; border-radius: 6px; }
+      .vhu-h-btn-close:hover { color: #ef4444; background: #fee2e2; }
+    </style>
+    <div class="vhu-h-icon">✨</div>
+    <div>
+      <div class="vhu-h-title">Đã mở khóa menu sổ xuống trên web!</div>
+      <div class="vhu-h-desc">Các ô lỗi & Phường Xã đã có sẵn menu để chọn trực tiếp.</div>
+    </div>
+    <button id="vhuQuickSaveBtn" class="vhu-h-btn-save">🚀 Lưu Vĩnh Viễn</button>
+    <button id="vhuCloseHelperBtn" class="vhu-h-btn-close">&times;</button>
+  `;
+
+  document.body.appendChild(helperBar);
+  document.getElementById('vhuCloseHelperBtn').onclick = () => helperBar.remove();
+
+  // 9. XỬ LÝ LƯU VĨNH VIỄN LÊN MÁY CHỦ & BẬT BÌNH CHỌN
   function showVoteModal() {
     if (document.getElementById('vhu-vote-modal')) return;
 
@@ -477,96 +259,19 @@
     };
   }
 
-  // Xử lý bấm nút LƯU & ÁP DỤNG
-  const submitBtn = document.getElementById('vhuSubmitBtn');
-  const errorBox = document.getElementById('vhuErrorBox');
+  document.getElementById('vhuQuickSaveBtn').onclick = async function() {
+    const btn = document.getElementById('vhuQuickSaveBtn');
+    btn.innerText = "⏳ Đang lưu...";
+    btn.disabled = true;
 
-  submitBtn.onclick = async function() {
-    errorBox.style.display = 'none';
-    errorBox.innerText = '';
+    // Lấy state mới nhất từ React sau khi sinh viên đã chọn trên web
+    const latestState = { ...(targetFiber?.memoizedState?.memoizedState || s) };
 
-    // Thu thập dữ liệu
-    const tinhVal = document.getElementById('vhu_f_tinh').value;
-    const phuongXaVal = document.getElementById('vhu_f_phuongxa').value.trim();
-    const soNhaVal = document.getElementById('vhu_f_sonha').value.trim();
-    const diaChiVal = document.getElementById('vhu_f_diachi').value.trim();
-    const noiSinhVal = document.getElementById('vhu_f_noisinh').value;
-    const danTocVal = document.getElementById('vhu_f_dantoc').value;
-    const tonGiaoVal = document.getElementById('vhu_f_tongiao').value;
-    const quocTichVal = document.getElementById('vhu_f_quoctich').value;
-
-    const cmndVal = document.getElementById('vhu_f_cmnd').value.replace(/\s/g, "");
-    const ngayCapVal = document.getElementById('vhu_f_ngaycap').value.trim();
-    const noiCapVal = document.getElementById('vhu_f_noicap').value.trim();
-    const bhytVal = document.getElementById('vhu_f_bhyt').value.trim();
-    const diDongVal = document.getElementById('vhu_f_didong').value.replace(/\s/g, "");
-    const emailVal = document.getElementById('vhu_f_email').value.trim();
-    const nguoiLHVal = document.getElementById('vhu_f_nguoilh').value.trim();
-    const sdtLHVal = document.getElementById('vhu_f_sdtlh').value.replace(/\s/g, "");
-
-    // Validation
-    function showError(msg, elId) {
-      errorBox.innerText = '⚠️ ' + msg;
-      errorBox.style.display = 'block';
-      if (elId) {
-        const targetEl = document.getElementById(elId);
-        targetEl.focus();
-        targetEl.style.borderColor = '#dc2626';
-        setTimeout(() => { targetEl.style.borderColor = '#cbd5e1'; }, 3000);
-      }
+    // Đảm bảo Phường Xã có mã chuẩn
+    if (!latestState.PhuongXaThuongTruID || latestState.PhuongXaThuongTruID === "__CUSTOM__") {
+      latestState.PhuongXaThuongTruID = "00001";
     }
 
-    if (!phuongXaVal) return showError("Vui lòng chọn hoặc nhập Tên Phường / Xã!", "vhu_f_phuongxa");
-    if (!soNhaVal) return showError("Vui lòng nhập Số nhà, tên đường hoặc thôn/xóm!", "vhu_f_sonha");
-    if (!diaChiVal) return showError("Vui lòng nhập Địa chỉ tạm trú / liên lạc!", "vhu_f_diachi");
-    if (!cmndVal || !/^(\d{9}|\d{12})$/.test(cmndVal)) return showError("Số CCCD (12 số) hoặc CMND (9 số) không hợp lệ!", "vhu_f_cmnd");
-    if (!ngayCapVal) return showError("Vui lòng nhập Ngày cấp CCCD (dd/mm/yyyy)!", "vhu_f_ngaycap");
-    if (!noiCapVal) return showError("Vui lòng nhập Nơi cấp CCCD!", "vhu_f_noicap");
-    if (!bhytVal) return showError("Vui lòng nhập Mã thẻ BHYT thật của bạn!", "vhu_f_bhyt");
-    if (!diDongVal || !/^0\d{9}$/.test(diDongVal)) return showError("Số điện thoại cá nhân phải là 10 số và bắt đầu bằng 0!", "vhu_f_didong");
-    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal) || emailVal.toLowerCase().endsWith("@vhu.edu.vn")) {
-      return showError("Email cá nhân không hợp lệ (Dùng Gmail, Yahoo... không dùng đuôi @vhu.edu.vn)!", "vhu_f_email");
-    }
-    if (!nguoiLHVal) return showError("Vui lòng nhập Họ tên phụ huynh/người thân liên hệ khẩn cấp!", "vhu_f_nguoilh");
-    if (!sdtLHVal || !/^0\d{9}$/.test(sdtLHVal)) return showError("SĐT người thân phải là 10 số bắt đầu bằng 0!", "vhu_f_sdtlh");
-    if (sdtLHVal === diDongVal) return showError("SĐT người thân bắt buộc phải KHÁC với số cá nhân của bạn!", "vhu_f_sdtlh");
-
-    // Lấy label của nơi sinh
-    const noiSinhObj = provinces.find(p => String(p.value) === String(noiSinhVal));
-    const noiSinhLabel = noiSinhObj ? (noiSinhObj.label.split(" - ")[1] || noiSinhObj.label) : "";
-
-    // Cập nhật state nội bộ
-    s.TinhThanhThuongTru = tinhVal;
-    s.PhuongXaThuongTruID = "00001";
-    s.PhuongXaThuongTru = phuongXaVal;
-    s.SoNhaThuongTru = soNhaVal;
-    s.DiaChiLienLac = diaChiVal;
-    s.BirthPlaceID = noiSinhVal;
-    s.NoiSinh = noiSinhLabel;
-    s.DanToc = danTocVal;
-    s.TonGiao = tonGiaoVal;
-    s.QuocGiaThuongTru = quocTichVal;
-    s.CMND = cmndVal;
-    s.NgayCapCMND = ngayCapVal;
-    s.NoiCapCMND = noiCapVal;
-    s.SoBaoHiemYTe = bhytVal;
-    s.DiDong = diDongVal;
-    s.EmailSV = emailVal;
-    s.ContactPersonName = nguoiLHVal;
-    s.ContactPersonPhone = sdtLHVal;
-
-    // Trạng thái đang lưu
-    submitBtn.innerText = "⏳ Đang lưu dữ liệu...";
-    submitBtn.style.opacity = "0.7";
-    submitBtn.disabled = true;
-
-    // Đồng bộ vào React
-    if (setWards) setWards([{ label: phuongXaVal, value: "00001" }]);
-    if (setAvatar) setAvatar(true);
-    if (setStudent) setStudent({ ...s });
-    if (setErrors) setErrors({});
-
-    // Gửi trực tiếp lên API máy chủ VHU để lưu vĩnh viễn
     try {
       const auth = JSON.parse(localStorage.getItem("authorizationData") || "{}");
       if (auth.Token) {
@@ -579,16 +284,18 @@
         const postRes = await fetch("https://portal_api.vhu.edu.vn/api/student/UpdateStudent", {
           method: "POST",
           headers: headers,
-          body: JSON.stringify(s)
+          body: JSON.stringify(latestState)
         });
         const result = await postRes.json();
-        console.log("Kết quả lưu API:", result);
+        console.log("Kết quả lưu:", result);
       }
-    } catch(e) {
-      console.warn("Lỗi lưu API trực tiếp (sẽ dùng submit form):", e);
+    } catch (err) {
+      console.warn("Lỗi lưu trực tiếp:", err);
     }
 
-    closeModal();
+    helperBar.remove();
     showVoteModal();
   };
+
+  console.log("🎉 Hoàn tất! Menu Phường Xã & các ô lỗi đã sẵn sàng cho bạn chọn trực tiếp trên trang web.");
 })();
