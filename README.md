@@ -26,7 +26,7 @@ Khi sinh viên đăng nhập vào Cổng thông tin sinh viên VHU (`https://por
 
 ## ✨ Tính năng của Script Fix
 1. 🛡️ **Giữ nguyên thông tin**: Những mục bạn đã điền (Họ tên, SĐT, Email, CCCD...) được giữ nguyên 100%, không bị ghi đè.
-2. 🎯 **Chỉ hỏi mục bị thiếu**: Mục nào còn trống trên form thì script mới hỏi để bạn nhập.
+2. 📋 **Giao diện bảng chọn trực quan (Có menu sổ xuống - Dropdown)**: Tự động hiện popup form chuyên nghiệp, có sẵn menu sổ xuống cho Tỉnh/Thành, Phường/Xã, Nơi sinh, Dân tộc, Tôn giáo, Quốc tịch y hệt trên web!
 3. 🏥 **Không random mã BHYT**: Nhập đúng mã thẻ BHYT thật của bạn.
 4. ⚡ **Mở khóa ô Phường xã**: Tự động xử lý mã xã chuẩn dưới 10 ký tự, không bao giờ bị lỗi tràn dữ liệu SQL Server (`String or binary data would be truncated`).
 5. 💾 **Lưu vĩnh viễn**: Gửi dữ liệu hợp lệ thẳng lên máy chủ trường VHU, từ đó **F5 hoặc đăng nhập lại thoải mái không bao giờ bị hiện lại bảng này nữa**.
@@ -50,7 +50,7 @@ Sao chép toàn bộ nội dung file [`vhu_fix_tool.js`](./vhu_fix_tool.js) ho�
 
 ### 3️⃣ Bước 3: Dán mã & Hoàn tất
 1. Nhấn **Ctrl + V** để dán đoạn mã vào rồi nhấn **Enter**.
-2. Nhập các thông tin còn thiếu theo từng ô hỏi trên màn hình (Phường xã, SĐT người thân...).
+2. Màn hình sẽ hiện bảng cập nhật với **đầy đủ menu sổ xuống (Dropdown)** cho Tỉnh thành, Phường xã, Dân tộc, Tôn giáo... Bạn chỉ cần chọn nhanh và bấm **🚀 Áp dụng & Lưu vĩnh viễn**.
 3. Đợi thông báo **"🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!"** &rarr; Trang web sẽ tự tải lại và đưa bạn vào thẳng trang chủ Portal sinh viên!
 
 ---
