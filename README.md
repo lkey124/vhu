@@ -53,13 +53,16 @@ Sao chép toàn bộ nội dung file [`vhu_fix_tool.js`](./vhu_fix_tool.js) ho�
 2. Các ô lỗi & ô Phường/Xã trên trang web sẽ **tự động mở sổ menu xuống** với đầy đủ các lựa chọn. Bạn chọn trực tiếp trên form và bấm **🚀 Lưu Vĩnh Viễn** (hoặc bấm Lưu trên form của trường).
 3. Đợi thông báo **"🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!"** &rarr; Trang web sẽ tự tải lại và đưa bạn vào thẳng trang chủ Portal sinh viên!
 
+### 🎬 Video Hướng Dẫn Nhanh (30 giây)
+Xem video hướng dẫn trực quan các bước thao tác trên trình duyệt (có thể xem trực tiếp tại trang web hướng dẫn hoặc file [`huong-dan.mp4`](./huong-dan.mp4)).
+
 ---
 
 ## 🎁 Ưu Đãi Độc Quyền - BinhLuu Store
 
 Ghé thăm gian hàng tài khoản bản quyền giá sinh viên chính chủ:
-- **Sản phẩm nổi bật**: Canva Pro, Netflix 4K UHD, ChatGPT Plus GPT-4o, CapCut Pro, Youtube Premium, Spotify Premium...
-- 🔥 **ĐẶC BIỆT**: Mua bất kỳ tài khoản nào tại shop được **TẶNG NGAY 1 THÁNG CANVA PRO** chính chủ 100%!
+- **Sản phẩm nổi bật**: **Locket Gold**, **CapCut Pro**, Netflix 4K, ChatGPT Plus, YouTube Premium, Spotify... và nhiều tài khoản khác!
+- 🔥 **ĐẶC BIỆT**: Mua tài khoản bất kỳ trên shop **TẶNG NGAY 1 THÁNG CANVA PRO** chính chủ!
 
 👉 **[🛒 GHÉ THĂM GIAN HÀNG BINHLUU STORE](https://binhluu.ai.studio/)**
 

@@ -209,36 +209,35 @@
     shopOverlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); z-index: 99999999; display: flex; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;';
 
     const shopContent = document.createElement('div');
-    shopContent.style.cssText = 'background: #ffffff; max-width: 440px; width: 100%; border-radius: 24px; padding: 28px 24px 22px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35); position: relative; border: 3px solid #a7f3d0; box-sizing: border-box; animation: vhuFadeIn 0.3s ease-out;';
+    shopContent.style.cssText = 'background: #ffffff; max-width: 440px; width: 100%; border-radius: 24px; padding: 28px 24px 22px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35); position: relative; border: 3px solid #e2e8f0; box-sizing: border-box; animation: vhuFadeIn 0.3s ease-out;';
 
     shopContent.innerHTML = `
       <style>
         @keyframes vhuFadeIn { from { opacity: 0; transform: scale(0.92) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-        @keyframes vhuGiftBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-        .vhu-gift { display: inline-block; animation: vhuGiftBounce 1.5s infinite; font-size: 40px; line-height: 1; margin-bottom: 10px; }
-        .vhu-title { font-size: 19px; font-weight: 800; color: #065f46; margin-bottom: 6px; }
-        .vhu-badge { display: inline-block; background: #d1fae5; color: #047857; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
-        .vhu-box-msg { font-size: 14px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f0fdf4; border-radius: 16px; border: 1.5px dashed #6ee7b7; text-align: center; }
-        .vhu-box-msg strong { color: #047857; }
-        .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #b91c1c; font-weight: 800; border: 1.5px solid #fca5a5; font-size: 12.5px; }
-        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px 20px; background: linear-gradient(135deg, #059669, #047857); color: white !important; border: none; border-radius: 16px; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
-        .vhu-btn-shop:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(5, 150, 105, 0.45); }
+        .vhu-gift { font-size: 38px; line-height: 1; margin-bottom: 10px; display: inline-block; }
+        .vhu-title { font-size: 18.5px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+        .vhu-badge { display: inline-block; background: #f1f5f9; color: #475569; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 14px; }
+        .vhu-box-msg { font-size: 13.5px; color: #334155; line-height: 1.55; margin-bottom: 18px; padding: 14px; background: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; text-align: center; }
+        .vhu-box-msg strong { color: #0f172a; }
+        .vhu-deal-pill { display: block; margin-top: 8px; padding: 6px 10px; background: #ffffff; border-radius: 10px; color: #e11d48; font-weight: 800; border: 1px solid #fecdd3; font-size: 12.5px; }
+        .vhu-btn-shop { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 12px 20px; background: #0f172a; color: white !important; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25); transition: all 0.2s ease; box-sizing: border-box; margin-bottom: 10px; }
+        .vhu-btn-shop:hover { background: #2563eb; transform: translateY(-1px); }
         .vhu-btn-skip { display: block; width: 100%; padding: 10px 20px; background: #f8fafc; color: #64748b; border: 1px solid #e2e8f0; border-radius: 14px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
-        .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; transform: translateY(-1px); }
+        .vhu-btn-skip:hover { background: #e2e8f0; color: #0f172a; }
       </style>
       <div class="vhu-gift">🎁</div>
       <div class="vhu-title">🎉 ĐÃ LƯU THÀNH CÔNG VĨNH VIỄN!</div>
-      <div class="vhu-badge">BinhLuu Store • Ưu Đãi Sinh Viên VHU</div>
+      <div class="vhu-badge">BinhLuu Store • Locket Gold, CapCut & Nhiều TK Khác</div>
       <div class="vhu-box-msg">
         Bạn đã mở khóa Portal VHU thành công! 🥳<br>
-        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản bản quyền học tập & giải trí chính chủ (Canva Pro, Netflix, ChatGPT, CapCut, Spotify...):<br>
-        <span class="vhu-deal-pill">🔥 MUA HÀNG TẠI SHOP TẶNG NGAY 1 THÁNG CANVA PRO!</span>
+        Ghé thăm <strong>BinhLuu Store</strong> sắm tài khoản Locket Gold, CapCut Pro & nhiều tài khoản bản quyền khác:<br>
+        <span class="vhu-deal-pill">🔥 MUA BẤT KỲ TÀI KHOẢN NÀO TẶNG NGAY 1 THÁNG CANVA PRO!</span>
       </div>
       <a href="https://binhluu.ai.studio/" target="_blank" id="vhuShopLink" class="vhu-btn-shop">
-        🛒 Ghé Shop Nhận Quà Liền
+        🛒 Xem Shop Nhận Quà Liền &rarr;
       </a>
       <button id="vhuSkipButton" class="vhu-btn-skip">
-        Vào thẳng Portal Sinh Viên &rarr;
+        Vào thẳng Portal Sinh Viên
       </button>
     `;
 
